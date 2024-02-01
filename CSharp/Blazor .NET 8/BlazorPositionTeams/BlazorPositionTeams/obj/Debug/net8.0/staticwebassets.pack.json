@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Projetos\\Courses\\CSharp\\Blazor .NET 8\\BlazorPositionTeams\\BlazorPositionTeams\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorPositionTeams.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BlazorPositionTeams.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Projetos\\Courses\\CSharp\\Blazor .NET 8\\BlazorPositionTeams\\BlazorPositionTeams\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Projetos\\Courses\\CSharp\\Blazor .NET 8\\BlazorPositionTeams\\BlazorPositionTeams\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Projetos\\Courses\\CSharp\\Blazor .NET 8\\BlazorPositionTeams\\BlazorPositionTeams\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Projetos\\Courses\\CSharp\\Blazor .NET 8\\BlazorPositionTeams\\BlazorPositionTeams\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorPositionTeams.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorPositionTeams.props",
+      "PackagePath": "build\\BlazorPositionTeams.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorPositionTeams.props",
+      "PackagePath": "buildMultiTargeting\\BlazorPositionTeams.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorPositionTeams.props",
+      "PackagePath": "buildTransitive\\BlazorPositionTeams.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

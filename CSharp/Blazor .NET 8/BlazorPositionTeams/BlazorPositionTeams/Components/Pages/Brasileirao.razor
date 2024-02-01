@@ -1,0 +1,105 @@
+﻿@page "/brasileirao"
+@rendermode InteractiveServer
+@inject AppDbContext _context 
+
+<PageTitle>Brasileirão</PageTitle>
+<h1>Campeonato Brasileiro de 2023</h1>
+
+@if(teamsQueryable == null)
+{
+	<p><em>Carregando...</em></p>
+}
+else
+{
+	<div class="grid">
+		<QuickGrid Items="@teamsFilterQueryable" @ref="refgrid" Pagination="@pagination">
+			<PropertyColumn Title="Name" Property="@(t => t.Name)" />
+			<PropertyColumn Title="P" Property="@(t => t.Points)" Sortable="true" />
+			<PropertyColumn Title="G" Property="@(t => t.Games)" />
+			<PropertyColumn Title="V" Property="@(t => t.Victories)" Sortable="true" />
+			<PropertyColumn Title="D" Property="@(t => t.Draws)" />
+			<PropertyColumn Title="L" Property="@(t => t.Defeats)" />
+			<PropertyColumn Title="GS" Property="@(t => t.GoalsScored)" />
+			<PropertyColumn Title="OG" Property="@(t => CalculateOG(t.GoalsScored, t.GoalDifference))"/>
+			<PropertyColumn Title="GD" Property="@(t => t.GoalDifference)" Sortable="true" />
+			<PropertyColumn Title="Mundial" Property="@(t => VeriryMundial(t.HasMundial))">
+				<ColumnOptions>
+					<input type="checkbox" @bind="teamHasmundial" @bind:after="Filter" />With Mundial
+				</ColumnOptions>
+			</PropertyColumn>
+			<TemplateColumn Title="Action">
+				<button class="btn btn-primary" @onclick="@(() => ShowStatus(context))">Status</button>
+			</TemplateColumn>
+		</QuickGrid>
+	</div>
+	<div class="page-size-chooser">
+		teams :
+		<select @bind="@pagination.ItemsPerPage">
+			<option>2</option>
+			<option>4</option>
+		</select>
+	</div>
+	<Paginator State="@pagination" />
+}
+
+<p>
+	<h4><b>@Mensagem</b></h4>
+</p>
+
+@code {
+
+	public IQueryable<Team>? teamsQueryable { get; set; }
+	public IQueryable<Team>? teamsFilterQueryable { get; set; }
+	PaginationState pagination = new PaginationState { ItemsPerPage = 2 };
+	public string? Mensagem { get; set; } = string.Empty;
+	private bool teamHasmundial;
+	QuickGrid<Team>? refgrid;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await Task.Delay(300);
+		LoadingTeams();
+	}
+
+	private IQueryable<Team> LoadingTeams()
+	{
+		teamsQueryable = _context.Teams
+									.OrderByDescending(t => t.Points)
+									.ThenByDescending(t => t.Victories)
+										.ThenByDescending(t => t.GoalDifference)
+								.AsQueryable<Team>();
+
+		teamsFilterQueryable = teamsQueryable;
+		return teamsQueryable;
+	}
+
+	private int CalculateOG(int goalsScored, int goalDifference)
+	{
+		return goalsScored - goalDifference;
+	}
+
+	private string VeriryMundial(bool hasMundial)
+	{
+		return hasMundial ? "Yes" : "No";
+	}
+
+	private void ShowStatus(Team team)
+	{
+		Mensagem = $"{team.Name} - {team.Status}";
+	}
+
+	public async Task Filter()
+	{
+		if (teamHasmundial)
+		{
+			teamsFilterQueryable = teamsQueryable.Where(t => t.HasMundial);
+		}
+		else
+		{
+			teamsFilterQueryable = teamsQueryable;
+		}
+
+		await refgrid!.RefreshDataAsync();
+	}
+
+}
