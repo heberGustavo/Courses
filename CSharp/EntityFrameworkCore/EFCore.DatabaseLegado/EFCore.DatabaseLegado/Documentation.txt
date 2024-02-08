@@ -1,0 +1,10 @@
+﻿# To create a database in Entity with tables that already exists, you need to follow this steps:
+
+1. Open Package Manager Console
+2. Install the packages: 
+	2.1 - install-package microsoft.entityframeworkcore
+	2.2 - install-package microsoft.entityframeworkcore.tools
+	2.3 - install-package microsoft.entityframeworkcore.design
+	2.4 - install-package microsoft.entityframeworkcore.sqlserver
+
+3. Execute: scaffold-dbcontext -provider microsoft.entityframeworkcore.sqlserver -connection "Password=root;Persist Security Info=True;User ID=root;Initial Catalog=HeroiApp;Data Source=DESKTOP-N25IT39\SQLEXPRESS;TrustServerCertificate=True;" -OutputDir model
