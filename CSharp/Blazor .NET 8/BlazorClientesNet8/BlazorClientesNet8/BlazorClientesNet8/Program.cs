@@ -4,6 +4,7 @@ using BlazorClientesNet8.Context;
 using BlazorClientesNet8.Repositories;
 using BlazorClientesNet8.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents()
 	.AddInteractiveWebAssemblyComponents();
-
 var app = builder.Build();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<ClienteContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ClienteContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("BlazorClientesDB")));
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
