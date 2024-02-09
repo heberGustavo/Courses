@@ -13,6 +13,6 @@ namespace BlazorClientesNet8.Shared.Interfaces
 		Task<Cliente> UpdateClientAsync(Cliente model);
 		Task<Cliente> DeleteClientAsync(int clienteId);
 		Task<List<Cliente>> GetAllClientAsync();
-		Task<Cliente> GetByIdClientAsync();
+		Task<Cliente> GetByIdClientAsync(int clienteId);
 	}
 }
