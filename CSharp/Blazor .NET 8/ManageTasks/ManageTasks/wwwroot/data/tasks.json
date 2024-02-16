@@ -1,0 +1,14 @@
+[
+  {
+    "id": "3f3b342f-5efa-4768-ad1a-eeb243775b15",
+    "description": "Fazer curso de Blazor",
+    "completed": false,
+    "datecreation": "2024-02-15"
+  },
+  {
+    "id": "b5f131a3-3577-43e8-b9ee-86d0b471d6ab",
+    "description": "Estudar Blazor",
+    "completed": true,
+    "datecreation": "2024-02-16"
+  }
+]
