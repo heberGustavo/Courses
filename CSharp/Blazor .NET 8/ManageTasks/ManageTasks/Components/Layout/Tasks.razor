@@ -1,0 +1,83 @@
+﻿@inject HttpClient http
+
+@if (listTasks == null)
+{
+	<Alert Message="Loading..."></Alert>
+}
+else if (!listTasks.Any())
+{
+	<Alert Message="Not exists taks yet"></Alert>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Description</th>
+				<th>Completed</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var myTask in listTasks)
+			{
+				<tr>
+					<td>@myTask.DateCreation</td>
+					<td>@myTask.Description</td>
+					<td>
+						<input type="checkbox" @bind="@myTask.Completed" /> @myTask.Completed
+					</td>
+					<td><button class="btn btn-sm btn-outline-danger" @onclick="(() => DeleteTask(myTask.Id))">Delete</button></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+<div class="form-group">
+	<label>Task: </label>
+	<input placeholder="Name task" @bind="newTask" />
+	<button class="btn btn-sm btn-outline-primary" @onclick="SaveTask">Save</button>
+</div>
+
+@code {
+
+	protected override async Task OnInitializedAsync()
+	{
+		listTasks = await http.GetFromJsonAsync<List<MyTask>>("http://localhost:5274/data/tasks.json");
+	}
+
+	public class MyTask
+	{
+		public Guid Id { get; set; }
+		public string Description { get; set; }
+		public bool Completed { get; set; }
+		public DateTime DateCreation { get; set; }
+	}
+
+	public string newTask = string.Empty;
+	public List<MyTask> listTasks = new List<MyTask>();
+
+	void SaveTask()
+	{
+		if (!string.IsNullOrWhiteSpace(newTask))
+		{
+			listTasks.Add(new MyTask
+				{
+					Id = Guid.NewGuid(),
+					Description = newTask.Trim(),
+					DateCreation = DateTime.Now,
+					Completed = false
+				});
+
+			newTask = string.Empty;
+		}
+	}
+
+	private void DeleteTask(Guid Id)
+	{
+		var myTask = listTasks.Find(t => t.Id == Id);
+		listTasks.Remove(myTask);
+	}
+}
