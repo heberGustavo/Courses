@@ -1,10 +1,26 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+
 @using ManageTasks.Components.Layout
+@using ManageTasks.Entities
+@inject HttpClient http
 
 <PageTitle>Tasks</PageTitle>
 
-<h1>Tasks</h1>
-<hr />
+<Tasks Titulo="Tasks" listTasks="GetTasks()" />
 
-<Tasks />
+@code{
+
+	public List<MyTask> listTasks { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		listTasks = await http.GetFromJsonAsync<List<MyTask>>("http://localhost:5274/data/tasks.json");
+	}
+
+	private List<MyTask> GetTasks()
+	{
+		return listTasks;
+	}
+
+}

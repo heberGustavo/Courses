@@ -1,4 +1,7 @@
-﻿@inject HttpClient http
+﻿@using ManageTasks.Entities
+@inject HttpClient http
+
+<h1>@Titulo</h1>
 
 @if (listTasks == null)
 {
@@ -43,21 +46,10 @@ else
 
 @code {
 
-	protected override async Task OnInitializedAsync()
-	{
-		listTasks = await http.GetFromJsonAsync<List<MyTask>>("http://localhost:5274/data/tasks.json");
-	}
-
-	public class MyTask
-	{
-		public Guid Id { get; set; }
-		public string Description { get; set; }
-		public bool Completed { get; set; }
-		public DateTime DateCreation { get; set; }
-	}
+	[Parameter] public List<MyTask> listTasks { get; set; }
+	[Parameter] public string Titulo { get; set; }
 
 	public string newTask = string.Empty;
-	public List<MyTask> listTasks = new List<MyTask>();
 
 	void SaveTask()
 	{
