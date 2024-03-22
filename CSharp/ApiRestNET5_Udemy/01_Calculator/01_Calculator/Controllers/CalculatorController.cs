@@ -49,6 +49,18 @@ namespace _01_Calculator.Controllers
 			return BadRequest("Invalid input");
 		}
 
+		[HttpGet("div/{firstNumber}/{secondNumber}")]
+		public IActionResult Div(string firstNumber, string secondNumber)
+		{
+			if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+			{
+				var div = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+				return Ok(div.ToString());
+			}
+
+			return BadRequest("Invalid input");
+		}
+
 		
 
 		#region Private Methods
