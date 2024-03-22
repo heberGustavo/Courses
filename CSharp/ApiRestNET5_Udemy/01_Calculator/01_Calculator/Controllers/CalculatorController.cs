@@ -61,7 +61,17 @@ namespace _01_Calculator.Controllers
 			return BadRequest("Invalid input");
 		}
 
-		
+		[HttpGet("sqrt/{number}")]
+		public IActionResult Sqrt(string number)
+		{
+			if (IsNumeric(number))
+			{
+				var sqrt = Math.Sqrt(ConvertToDouble(number));
+				return Ok(sqrt.ToString());
+			}
+
+			return BadRequest("Invalid input");
+		}
 
 		#region Private Methods
 
