@@ -1,0 +1,6 @@
+@ApiRestNET5_HostAddress = http://localhost:5244
+
+GET {{ApiRestNET5_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
