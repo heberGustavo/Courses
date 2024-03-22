@@ -25,6 +25,20 @@ namespace _01_Calculator.Controllers
 			return BadRequest("Invalid input"); 
 		}
 
+		[HttpGet("sub/{firstNumber}/{secondNumber}")]
+		public IActionResult Sub(string firstNumber, string secondNumber)
+		{
+			if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+			{
+				var sub = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+				return Ok(sub.ToString());
+			}
+
+			return BadRequest("Invalid input");
+		}
+
+		
+
 		#region Private Methods
 
 		private decimal ConvertToDecimal(string strNumber)
