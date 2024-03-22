@@ -37,6 +37,18 @@ namespace _01_Calculator.Controllers
 			return BadRequest("Invalid input");
 		}
 
+		[HttpGet("mult/{firstNumber}/{secondNumber}")]
+		public IActionResult Mult(string firstNumber, string secondNumber)
+		{
+			if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+			{
+				var mult = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+				return Ok(mult.ToString());
+			}
+
+			return BadRequest("Invalid input");
+		}
+
 		
 
 		#region Private Methods
