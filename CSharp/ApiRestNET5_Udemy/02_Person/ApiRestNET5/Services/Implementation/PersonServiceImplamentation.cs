@@ -14,15 +14,9 @@ namespace ApiRestNET5.Services.Implementation
 
 		#region Read
 
-		public List<Person> FindAll()
-		{
-			return _context.Persons.ToList();
-		}
+		public List<Person> FindAll() => _context.Persons.ToList();
 
-		public Person FindById(long id)
-		{
-			throw new NotImplementedException();
-		}
+		public Person FindById(long id) => _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
 
 		#endregion
 

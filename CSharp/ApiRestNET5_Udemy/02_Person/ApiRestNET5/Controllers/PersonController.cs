@@ -25,5 +25,14 @@ namespace ApiRestNET5.Controllers
 			return Ok(persons);
 		}
 
+		[HttpGet("{id}")]
+		public IActionResult Get(int id)
+		{
+			var person = _personService.FindById(id);
+			if (person == null) return NotFound();
+
+			return Ok(person);
+		}
+
 	}
 }
