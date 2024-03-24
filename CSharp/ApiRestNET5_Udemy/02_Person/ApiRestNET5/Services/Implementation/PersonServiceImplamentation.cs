@@ -24,7 +24,17 @@ namespace ApiRestNET5.Services.Implementation
 
 		public Person Create(Person person)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_context.Persons.Add(person);
+				_context.SaveChanges();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			return person;
 		}
 
 		public Person Update(Person person)

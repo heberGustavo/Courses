@@ -1,3 +1,4 @@
+using ApiRestNET5.Model;
 using ApiRestNET5.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,13 @@ namespace ApiRestNET5.Controllers
 			if (person == null) return NotFound();
 
 			return Ok(person);
+		}
+
+		[HttpPost]
+		public IActionResult Create([FromBody] Person model)
+		{
+			if(model == null) return BadRequest();
+			return Ok(_personService.Create(model));
 		}
 
 	}
