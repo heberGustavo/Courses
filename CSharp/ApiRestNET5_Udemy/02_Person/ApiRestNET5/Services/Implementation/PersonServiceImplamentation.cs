@@ -1,6 +1,7 @@
 ﻿using ApiRestNET5.Migration;
 using ApiRestNET5.Model;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Runtime.InteropServices;
 
 namespace ApiRestNET5.Services.Implementation
 {
@@ -43,22 +44,36 @@ namespace ApiRestNET5.Services.Implementation
 			if (!Exists(person.Id)) return new Person();
 
 			var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
-			try
-			{
-				_context.Entry(result).CurrentValues.SetValues(person);
-				_context.SaveChanges();
+			if (result != null) {
+				try
+				{
+					_context.Entry(result).CurrentValues.SetValues(person);
+					_context.SaveChanges();
+				}
+				catch (Exception)
+				{
+					throw;
+				}
 			}
-			catch (Exception)
-			{
-				throw;
-			}
-
+			
 			return person;
 		}
 
-		public void Delete(Person person)
+		public void Delete(long id)
 		{
-			throw new NotImplementedException();
+			var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
+			if(result != null)
+			{
+				try
+				{
+					_context.Persons.Remove(result);
+					_context.SaveChanges();
+				}
+				catch (Exception)
+				{
+					throw;
+				}
+			}
 		}
 
 		#endregion

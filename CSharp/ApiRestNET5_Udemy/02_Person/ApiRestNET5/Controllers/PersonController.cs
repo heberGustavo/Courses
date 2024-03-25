@@ -49,5 +49,15 @@ namespace ApiRestNET5.Controllers
 			return Ok(_personService.Update(model));
 		}
 
+		[HttpDelete("{id}")]
+		public IActionResult Delete(long id)
+		{
+			if (id <= 0) return BadRequest();
+			
+			_personService.Delete(id);
+
+			return NoContent();
+		}
+
 	}
 }

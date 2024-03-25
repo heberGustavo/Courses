@@ -9,6 +9,6 @@ namespace ApiRestNET5.Services
 
 		Person Create(Person person);
 		Person Update(Person person);
-		void Delete(Person person);
+		void Delete(long id);
 	}
 }
