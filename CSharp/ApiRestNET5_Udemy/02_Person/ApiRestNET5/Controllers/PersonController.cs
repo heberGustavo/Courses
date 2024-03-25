@@ -1,11 +1,13 @@
 using ApiRestNET5.Model;
 using ApiRestNET5.Services;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiRestNET5.Controllers
 {
+	[ApiVersion("1")]
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("api/v{version:apiVersion}/[controller]")]
 	public class PersonController : ControllerBase
 	{
 		private readonly ILogger<PersonController> _logger;

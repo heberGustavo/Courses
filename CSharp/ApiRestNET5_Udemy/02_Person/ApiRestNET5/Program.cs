@@ -25,7 +25,13 @@ builder.Services.AddScoped<IPersonService, PersonServiceImplamentation>();
 
 #endregion
 
+#region Versioning
+builder.Services.AddApiVersioning();
+#endregion
+
+#region Swagger
 builder.Services.AddSwaggerGen();
+#endregion
 
 var app = builder.Build();
 app.UseHttpsRedirection();
