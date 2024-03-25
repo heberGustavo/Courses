@@ -22,5 +22,14 @@ namespace ApiRestNET5.Controllers
 		{
 			return Ok(_bookBusiness.FindAll());
 		}
+
+		[HttpGet("{id}")]
+		public IActionResult FindById(int id)
+		{
+			var book = _bookBusiness.FindById(id);
+			if (book == null) return NotFound();
+			
+			return Ok(book);
+		}
 	}
 }

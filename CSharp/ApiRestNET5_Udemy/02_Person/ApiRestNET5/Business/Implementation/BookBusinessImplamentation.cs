@@ -18,8 +18,10 @@ namespace ApiRestNET5.Business.Implementation
 
 		public Book FindById(long id)
 		{
-			throw new NotImplementedException();
-		}
+			if (id <= 0) return null; 
+
+			return _bookRepository.FindById(id);
+		} 
 
 		#endregion
 

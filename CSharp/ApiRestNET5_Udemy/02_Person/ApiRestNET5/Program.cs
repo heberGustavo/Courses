@@ -16,13 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 #region MySQL
-
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(
 	connection,
 	new MySqlServerVersion(new Version(8,0,31))
 	));
-
 #endregion
 
 #region Migrations
@@ -33,10 +31,11 @@ if (builder.Environment.IsDevelopment())
 #endregion
 
 #region Dependency Injection
-
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
-builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplamentation>();
+builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 
+builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplamentation>();
+builder.Services.AddScoped<IBookRepository, BookRepositoryImplamentation>();
 #endregion
 
 #region Versioning
