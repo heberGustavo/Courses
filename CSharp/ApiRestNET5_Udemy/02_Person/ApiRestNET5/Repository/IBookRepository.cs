@@ -9,6 +9,6 @@ namespace ApiRestNET5.Repository
 
         Book Create(Book book);
         Book Update(Book book);
-        Book Delete(long id);
+        void Delete(long id);
     }
 }

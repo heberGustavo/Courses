@@ -56,9 +56,21 @@ namespace ApiRestNET5.Repository.Implementation
 			return book;
 		}
 
-		public Book Delete(long id)
+		public void Delete(long id)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				var book = _context.Books.SingleOrDefault(b => b.Id == id);
+				if (book != null)
+				{
+					_context.Books.Remove(book);
+					_context.SaveChanges();
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		#endregion

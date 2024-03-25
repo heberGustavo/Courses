@@ -9,6 +9,6 @@ namespace ApiRestNET5.Business
 
 		Book Create(Book book);
 		Book Update(Book book);
-		Book Delete(long id);
+		void Delete(long id);
 	}
 }

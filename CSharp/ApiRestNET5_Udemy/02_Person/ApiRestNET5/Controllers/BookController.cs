@@ -29,15 +29,13 @@ namespace ApiRestNET5.Controllers
 		{
 			var book = _bookBusiness.FindById(id);
 			if (book == null) return NotFound();
-			
+
 			return Ok(book);
 		}
 
 		[HttpPost]
 		public IActionResult Create([FromBody] Book model)
 		{
-			if(model == null) return BadRequest();
-
 			var book = _bookBusiness.Create(model);
 			if (book == null) return BadRequest();
 
@@ -47,11 +45,19 @@ namespace ApiRestNET5.Controllers
 		[HttpPut]
 		public IActionResult Update([FromBody] Book model)
 		{
-			if (model == null) return BadRequest();
 			var book = _bookBusiness.Update(model);
-			
+
 			if (book == null) return BadRequest();
 			return Ok(book);
+		}
+
+		[HttpDelete("{id}")]
+		public IActionResult Delete(int id) 
+		{ 
+			if(id <= 0) return NotFound();
+			_bookBusiness.Delete(id);
+
+			return NoContent();
 		}
 	}
 }
