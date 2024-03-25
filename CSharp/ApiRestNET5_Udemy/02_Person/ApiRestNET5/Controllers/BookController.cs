@@ -36,11 +36,21 @@ namespace ApiRestNET5.Controllers
 		[HttpPost]
 		public IActionResult Create([FromBody] Book model)
 		{
-			if(model == null) return BadRequest("Invalid model");
+			if(model == null) return BadRequest();
 
 			var book = _bookBusiness.Create(model);
-			if (book == null) return BadRequest("Error to create Book");
+			if (book == null) return BadRequest();
 
+			return Ok(book);
+		}
+
+		[HttpPut]
+		public IActionResult Update([FromBody] Book model)
+		{
+			if (model == null) return BadRequest();
+			var book = _bookBusiness.Update(model);
+			
+			if (book == null) return BadRequest();
 			return Ok(book);
 		}
 	}

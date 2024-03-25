@@ -39,7 +39,21 @@ namespace ApiRestNET5.Repository.Implementation
 
 		public Book Update(Book book)
 		{
-			throw new NotImplementedException();
+			var result = _context.Books.SingleOrDefault(b => b.Id == book.Id);
+			if (result != null)
+			{
+				try
+				{
+					_context.Entry(result).CurrentValues.SetValues(book);
+					_context.SaveChanges();
+				}
+				catch (Exception)
+				{
+					throw;
+				}
+			}
+
+			return book;
 		}
 
 		public Book Delete(long id)
