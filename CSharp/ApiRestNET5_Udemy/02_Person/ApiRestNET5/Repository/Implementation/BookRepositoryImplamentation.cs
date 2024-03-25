@@ -24,15 +24,25 @@ namespace ApiRestNET5.Repository.Implementation
 
 		public Book Create(Book book)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_context.Books.Add(book);
+				_context.SaveChanges();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			return book;
 		}
 
-		public Book Delete(long id)
+		public Book Update(Book book)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Book Update(Book book)
+		public Book Delete(long id)
 		{
 			throw new NotImplementedException();
 		}

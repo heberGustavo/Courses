@@ -27,10 +27,7 @@ namespace ApiRestNET5.Business.Implementation
 
 		#region Write
 
-		public Book Create(Book book)
-		{
-			throw new NotImplementedException();
-		}
+		public Book Create(Book book) => _bookRepository.Create(book);
 
 		public Book Delete(long id)
 		{

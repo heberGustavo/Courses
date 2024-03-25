@@ -1,4 +1,5 @@
 ﻿using ApiRestNET5.Business;
+using ApiRestNET5.Model;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,17 @@ namespace ApiRestNET5.Controllers
 			var book = _bookBusiness.FindById(id);
 			if (book == null) return NotFound();
 			
+			return Ok(book);
+		}
+
+		[HttpPost]
+		public IActionResult Create([FromBody] Book model)
+		{
+			if(model == null) return BadRequest("Invalid model");
+
+			var book = _bookBusiness.Create(model);
+			if (book == null) return BadRequest("Error to create Book");
+
 			return Ok(book);
 		}
 	}
