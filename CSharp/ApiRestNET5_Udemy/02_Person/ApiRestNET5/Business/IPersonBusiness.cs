@@ -10,7 +10,5 @@ namespace ApiRestNET5.Business
 		Person Create(Person person);
 		Person Update(Person person);
 		void Delete(long id);
-
-		bool Exists(long id);
 	}
 }

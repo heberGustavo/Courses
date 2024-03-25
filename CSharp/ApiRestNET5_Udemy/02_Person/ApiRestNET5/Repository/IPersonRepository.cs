@@ -10,5 +10,7 @@ namespace ApiRestNET5.Repository
 		Person Create(Person person);
 		Person Update(Person person);
 		void Delete(long id);
+
+		bool Exists(long id);
 	}
 }

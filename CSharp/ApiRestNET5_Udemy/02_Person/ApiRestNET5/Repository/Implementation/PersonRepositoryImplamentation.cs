@@ -76,9 +76,9 @@ namespace ApiRestNET5.Repository.Implementation
 
 		#endregion
 
-		#region Method Private
+		#region Methods Public
 
-		private bool Exists(long id)
+		public bool Exists(long id)
 		{
 			return _context.Persons.Any(p => p.Id.Equals(id));
 		}
