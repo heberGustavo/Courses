@@ -42,5 +42,12 @@ namespace ApiRestNET5.Controllers
 			return Ok(_personService.Create(model));
 		}
 
+		[HttpPut]
+		public IActionResult Update([FromBody] Person model)
+		{
+			if (model == null) return BadRequest();
+			return Ok(_personService.Update(model));
+		}
+
 	}
 }

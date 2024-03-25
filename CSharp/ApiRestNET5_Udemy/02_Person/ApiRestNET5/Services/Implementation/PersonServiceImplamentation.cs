@@ -1,5 +1,6 @@
 ﻿using ApiRestNET5.Migration;
 using ApiRestNET5.Model;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ApiRestNET5.Services.Implementation
 {
@@ -39,12 +40,34 @@ namespace ApiRestNET5.Services.Implementation
 
 		public Person Update(Person person)
 		{
-			throw new NotImplementedException();
+			if (!Exists(person.Id)) return new Person();
+
+			var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
+			try
+			{
+				_context.Entry(result).CurrentValues.SetValues(person);
+				_context.SaveChanges();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			return person;
 		}
 
 		public void Delete(Person person)
 		{
 			throw new NotImplementedException();
+		}
+
+		#endregion
+
+		#region Method Private
+
+		private bool Exists(long id)
+		{
+			return _context.Persons.Any(p => p.Id.Equals(id));
 		}
 
 		#endregion
