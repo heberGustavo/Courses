@@ -1,9 +1,9 @@
-﻿using ApiRestNET5.Migration;
-using ApiRestNET5.Model;
+﻿using ApiRestNET5.Model;
+using ApiRestNET5.Model.Context;
 
 namespace ApiRestNET5.Repository.Implementation
 {
-	public class PersonRepositoryImplamentation : IPersonRepository
+    public class PersonRepositoryImplamentation : IPersonRepository
 	{
 		private MySQLContext _context;
 
@@ -39,7 +39,7 @@ namespace ApiRestNET5.Repository.Implementation
 
 		public Person Update(Person person)
 		{
-			if (!Exists(person.Id)) return new Person();
+			if (!Exists(person.Id)) return null;
 
 			var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
 			if (result != null) {

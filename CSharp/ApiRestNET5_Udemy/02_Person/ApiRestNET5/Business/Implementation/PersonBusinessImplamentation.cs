@@ -1,5 +1,4 @@
-﻿using ApiRestNET5.Migration;
-using ApiRestNET5.Model;
+﻿using ApiRestNET5.Model;
 using ApiRestNET5.Repository;
 
 namespace ApiRestNET5.Business.Implementation
