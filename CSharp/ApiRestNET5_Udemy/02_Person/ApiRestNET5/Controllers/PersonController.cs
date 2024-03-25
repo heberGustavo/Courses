@@ -1,5 +1,5 @@
+using ApiRestNET5.Business;
 using ApiRestNET5.Model;
-using ApiRestNET5.Services;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,18 +11,18 @@ namespace ApiRestNET5.Controllers
 	public class PersonController : ControllerBase
 	{
 		private readonly ILogger<PersonController> _logger;
-		private readonly IPersonService _personService;
+		private readonly IPersonBusiness _personBusiness;
 
-		public PersonController(ILogger<PersonController> logger, IPersonService personService)
+		public PersonController(ILogger<PersonController> logger, IPersonBusiness personBusiness)
 		{
 			_logger = logger;
-			_personService = personService;
+			_personBusiness = personBusiness;
 		}
 
 		[HttpGet]
 		public IActionResult Get()
 		{
-			var persons = _personService.FindAll();
+			var persons = _personBusiness.FindAll();
 			if (!persons.Any()) return BadRequest();
 
 			return Ok(persons);
@@ -31,7 +31,7 @@ namespace ApiRestNET5.Controllers
 		[HttpGet("{id}")]
 		public IActionResult Get(int id)
 		{
-			var person = _personService.FindById(id);
+			var person = _personBusiness.FindById(id);
 			if (person == null) return NotFound();
 
 			return Ok(person);
@@ -41,14 +41,14 @@ namespace ApiRestNET5.Controllers
 		public IActionResult Create([FromBody] Person model)
 		{
 			if(model == null) return BadRequest();
-			return Ok(_personService.Create(model));
+			return Ok(_personBusiness.Create(model));
 		}
 
 		[HttpPut]
 		public IActionResult Update([FromBody] Person model)
 		{
 			if (model == null) return BadRequest();
-			return Ok(_personService.Update(model));
+			return Ok(_personBusiness.Update(model));
 		}
 
 		[HttpDelete("{id}")]
@@ -56,7 +56,7 @@ namespace ApiRestNET5.Controllers
 		{
 			if (id <= 0) return BadRequest();
 			
-			_personService.Delete(id);
+			_personBusiness.Delete(id);
 
 			return NoContent();
 		}

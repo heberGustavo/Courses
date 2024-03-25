@@ -1,15 +1,13 @@
 ﻿using ApiRestNET5.Migration;
 using ApiRestNET5.Model;
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Runtime.InteropServices;
 
-namespace ApiRestNET5.Services.Implementation
+namespace ApiRestNET5.Repository.Implementation
 {
-	public class PersonServiceImplamentation : IPersonService
+	public class PersonRepositoryImplamentation : IPersonRepository
 	{
 		private MySQLContext _context;
 
-		public PersonServiceImplamentation(MySQLContext context)
+		public PersonRepositoryImplamentation(MySQLContext context)
 		{
 			_context = context;
 		}

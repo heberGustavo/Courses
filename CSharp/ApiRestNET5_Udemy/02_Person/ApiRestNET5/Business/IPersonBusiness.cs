@@ -1,8 +1,8 @@
 ﻿using ApiRestNET5.Model;
 
-namespace ApiRestNET5.Services
+namespace ApiRestNET5.Business
 {
-	public interface IPersonService
+	public interface IPersonBusiness
 	{
 		List<Person> FindAll();
 		Person FindById(long id);
@@ -10,5 +10,7 @@ namespace ApiRestNET5.Services
 		Person Create(Person person);
 		Person Update(Person person);
 		void Delete(long id);
+
+		bool Exists(long id);
 	}
 }

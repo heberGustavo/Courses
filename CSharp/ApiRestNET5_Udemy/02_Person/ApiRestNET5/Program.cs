@@ -1,6 +1,8 @@
+using ApiRestNET5.Business;
+using ApiRestNET5.Business.Implementation;
 using ApiRestNET5.Migration;
-using ApiRestNET5.Services;
-using ApiRestNET5.Services.Implementation;
+using ApiRestNET5.Repository;
+using ApiRestNET5.Repository.Implementation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +23,8 @@ builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(
 
 #region Dependency Injection
 
-builder.Services.AddScoped<IPersonService, PersonServiceImplamentation>();
+builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
+builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplamentation>();
 
 #endregion
 
