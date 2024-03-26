@@ -1,13 +1,11 @@
 using ApiRestNET5.Business;
 using ApiRestNET5.Business.Implementation;
 using ApiRestNET5.Model.Context;
-using ApiRestNET5.Repository;
-using ApiRestNET5.Repository.Implementation;
+using ApiRestNET5.Repository.Generic;
 using EvolveDb;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Serilog;
-using System.Security.Cryptography.Xml;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,8 +32,7 @@ if (builder.Environment.IsDevelopment())
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 
-builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplamentation>();
-builder.Services.AddScoped<IBookRepository, BookRepositoryImplamentation>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 #endregion
 
 #region Versioning

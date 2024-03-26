@@ -1,13 +1,14 @@
 ﻿using ApiRestNET5.Model;
 using ApiRestNET5.Repository;
+using ApiRestNET5.Repository.Generic;
 
 namespace ApiRestNET5.Business.Implementation
 {
 	public class PersonBusinessImplamentation : IPersonBusiness
 	{
-		private readonly IPersonRepository _personRepository;
+		private readonly IRepository<Person> _personRepository;
 
-		public PersonBusinessImplamentation(IPersonRepository personRepository)
+		public PersonBusinessImplamentation(IRepository<Person> personRepository)
 		{
 			_personRepository = personRepository;
 		}

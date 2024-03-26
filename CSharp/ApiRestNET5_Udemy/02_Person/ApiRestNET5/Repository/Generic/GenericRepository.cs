@@ -20,7 +20,7 @@ namespace ApiRestNET5.Repository.Generic
 
 		public List<T> FindAll() => _dataset.ToList();
 
-		public T FindById(long id) => _dataset.SingleOrDefault(p => p.Id.Equals(id));
+		public T FindById(long id) => _dataset.SingleOrDefault(p => p.Id == id);
 
 		#endregion
 
