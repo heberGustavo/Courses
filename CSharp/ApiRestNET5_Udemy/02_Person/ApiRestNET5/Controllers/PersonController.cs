@@ -1,4 +1,5 @@
 using ApiRestNET5.Business;
+using ApiRestNET5.Data.VO;
 using ApiRestNET5.Model;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
@@ -38,14 +39,14 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody] Person model)
+		public IActionResult Create([FromBody] PersonVO model)
 		{
 			if(model == null) return BadRequest();
 			return Ok(_personBusiness.Create(model));
 		}
 
 		[HttpPut]
-		public IActionResult Update([FromBody] Person model)
+		public IActionResult Update([FromBody] PersonVO model)
 		{
 			if (model == null) return BadRequest();
 			return Ok(_personBusiness.Update(model));

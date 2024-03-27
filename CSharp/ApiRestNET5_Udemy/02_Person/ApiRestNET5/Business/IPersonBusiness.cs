@@ -1,14 +1,15 @@
-﻿using ApiRestNET5.Model;
+﻿using ApiRestNET5.Data.VO;
+using ApiRestNET5.Model;
 
 namespace ApiRestNET5.Business
 {
 	public interface IPersonBusiness
 	{
-		List<Person> FindAll();
-		Person FindById(long id);
+		List<PersonVO> FindAll();
+		PersonVO FindById(long id);
 
-		Person Create(Person person);
-		Person Update(Person person);
+		PersonVO Create(PersonVO person);
+		PersonVO Update(PersonVO person);
 		void Delete(long id);
 	}
 }
