@@ -1,14 +1,15 @@
-﻿using ApiRestNET5.Model;
+﻿using ApiRestNET5.Data.VO;
+using ApiRestNET5.Model;
 
 namespace ApiRestNET5.Business
 {
 	public interface IBookBusiness
 	{
-		List<Book> FindAll();
-		Book FindById(long id);
+		List<BookVO> FindAll();
+		BookVO FindById(long id);
 
-		Book Create(Book book);
-		Book Update(Book book);
+		BookVO Create(BookVO book);
+		BookVO Update(BookVO book);
 		void Delete(long id);
 	}
 }

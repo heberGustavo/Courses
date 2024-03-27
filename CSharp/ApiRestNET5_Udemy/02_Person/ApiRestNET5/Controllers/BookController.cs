@@ -1,4 +1,5 @@
 ﻿using ApiRestNET5.Business;
+using ApiRestNET5.Data.VO;
 using ApiRestNET5.Model;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
@@ -34,7 +35,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody] Book model)
+		public IActionResult Create([FromBody] BookVO model)
 		{
 			var book = _bookBusiness.Create(model);
 			if (book == null) return BadRequest();
@@ -43,7 +44,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpPut]
-		public IActionResult Update([FromBody] Book model)
+		public IActionResult Update([FromBody] BookVO model)
 		{
 			var book = _bookBusiness.Update(model);
 
