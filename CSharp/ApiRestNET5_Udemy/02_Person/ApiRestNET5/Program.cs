@@ -16,6 +16,7 @@ var appTitle = "REST API's from 0 to Azure with ASP.NET 5 and Docker";
 var appVersion = "v1";
 var appDescription = $"API RESTful developed in course '{appTitle}'";
 
+builder.Services.AddRouting(option => option.LowercaseUrls = true); //Set all URL to lowercase
 builder.Services.AddControllers();
 
 #region MySQL
