@@ -1,5 +1,6 @@
 using ApiRestNET5.Business;
 using ApiRestNET5.Data.VO;
+using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ namespace ApiRestNET5.Controllers
 {
 	[ApiVersion("1")]
 	[ApiController]
-	[Route("api/v{version:apiVersion}/[controller]")]
+	[Route("api/[controller]/v{version:apiVersion}")]
 	public class PersonController : ControllerBase
 	{
 		private readonly ILogger<PersonController> _logger;
@@ -21,6 +22,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpGet]
+		[TypeFilter(typeof(HyperMediaFilter))]
 		public IActionResult Get()
 		{
 			var persons = _personBusiness.FindAll();
@@ -30,6 +32,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpGet("{id}")]
+		[TypeFilter(typeof(HyperMediaFilter))]
 		public IActionResult Get(int id)
 		{
 			var person = _personBusiness.FindById(id);
@@ -39,6 +42,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpPost]
+		[TypeFilter(typeof(HyperMediaFilter))]
 		public IActionResult Create([FromBody] PersonVO model)
 		{
 			if(model == null) return BadRequest();
@@ -46,6 +50,7 @@ namespace ApiRestNET5.Controllers
 		}
 
 		[HttpPut]
+		[TypeFilter(typeof(HyperMediaFilter))]
 		public IActionResult Update([FromBody] PersonVO model)
 		{
 			if (model == null) return BadRequest();

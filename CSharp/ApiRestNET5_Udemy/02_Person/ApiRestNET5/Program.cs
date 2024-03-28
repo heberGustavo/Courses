@@ -1,5 +1,7 @@
 using ApiRestNET5.Business;
 using ApiRestNET5.Business.Implementation;
+using ApiRestNET5.Hypermedia.Enricher;
+using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model.Context;
 using ApiRestNET5.Repository.Generic;
 using EvolveDb;
@@ -28,11 +30,19 @@ if (builder.Environment.IsDevelopment())
 }
 #endregion
 
+#region HATEOES
+var filterOptions = new HyperMediaFilterOptions();
+filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+#endregion
+
 #region Dependency Injection
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
+builder.Services.AddSingleton(filterOptions);
 #endregion
 
 #region Versioning
@@ -47,6 +57,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.MapControllerRoute("DefaultApi", "{controller=values}/v{version=apiVersion}/{id?}");
 
 app.UseSwagger();
 app.UseSwaggerUI();

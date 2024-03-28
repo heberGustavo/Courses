@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using ApiRestNET5.Hypermedia;
+using ApiRestNET5.Hypermedia.Abstract;
 
 namespace ApiRestNET5.Data.VO
 {
-	public class BookVO
+	public class BookVO : ISupportHyperMedia
 	{
 		//[JsonPropertyName("name_custom_id")]
 		public int Id { get; set; }
@@ -12,5 +12,6 @@ namespace ApiRestNET5.Data.VO
 		public decimal Price { get; set; }
 		//[JsonIgnore] //Ignore in serialization
 		public string Title { get; set; }
+		public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
 	}
 }
