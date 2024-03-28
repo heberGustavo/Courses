@@ -5,7 +5,9 @@ using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model.Context;
 using ApiRestNET5.Repository.Generic;
 using EvolveDb;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using Serilog;
 
@@ -50,7 +52,22 @@ builder.Services.AddApiVersioning();
 #endregion
 
 #region Swagger
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(s =>
+{
+	s.SwaggerDoc("v1",
+		new OpenApiInfo
+		{
+			Title = "REST API's from 0 to Azure with ASP.NET 5 and Docker",
+			Version = "v1",
+			Description = "API RESTful developed in course 'REST API's from 0 to Azure with ASP.NET 5 and Docker'",
+			Contact = new OpenApiContact
+			{
+				Name = "Heber Gustavo",
+				Email = "heber.gbarbosa@hotmail.com",
+				Url = new Uri("https://www.linkedin.com/in/heber-gustavo/")
+			}
+		});
+});
 #endregion
 
 var app = builder.Build();
@@ -59,8 +76,18 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapControllerRoute("DefaultApi", "{controller=values}/v{version=apiVersion}/{id?}");
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwagger(); //Your responsible is: Generate JSON with Documentation
+
+//Your responsible is: Generate a page HTML
+app.UseSwaggerUI(s =>
+{
+	s.SwaggerEndpoint("/swagger/v1/swagger.json",
+		"REST API's from 0 to Azure with ASP.NET 5 and Docker - v1");
+});
+
+var option = new RewriteOptions();
+option.AddRedirect("^$", "swagger");
+app.UseRewriter(option);
 
 app.Run();
 
