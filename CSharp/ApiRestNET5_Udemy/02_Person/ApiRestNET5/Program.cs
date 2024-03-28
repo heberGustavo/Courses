@@ -12,8 +12,9 @@ using MySqlConnector;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+var appTitle = "REST API's from 0 to Azure with ASP.NET 5 and Docker";
+var appVersion = "v1";
+var appDescription = $"API RESTful developed in course '{appTitle}'";
 
 builder.Services.AddControllers();
 
@@ -57,9 +58,9 @@ builder.Services.AddSwaggerGen(s =>
 	s.SwaggerDoc("v1",
 		new OpenApiInfo
 		{
-			Title = "REST API's from 0 to Azure with ASP.NET 5 and Docker",
-			Version = "v1",
-			Description = "API RESTful developed in course 'REST API's from 0 to Azure with ASP.NET 5 and Docker'",
+			Title = appTitle,
+			Version = appVersion,
+			Description = appDescription,
 			Contact = new OpenApiContact
 			{
 				Name = "Heber Gustavo",
@@ -79,11 +80,7 @@ app.MapControllerRoute("DefaultApi", "{controller=values}/v{version=apiVersion}/
 app.UseSwagger(); //Your responsible is: Generate JSON with Documentation
 
 //Your responsible is: Generate a page HTML
-app.UseSwaggerUI(s =>
-{
-	s.SwaggerEndpoint("/swagger/v1/swagger.json",
-		"REST API's from 0 to Azure with ASP.NET 5 and Docker - v1");
-});
+app.UseSwaggerUI(s => { s.SwaggerEndpoint("/swagger/v1/swagger.json", $"{appTitle} - {appVersion}"); });
 
 var option = new RewriteOptions();
 option.AddRedirect("^$", "swagger");
