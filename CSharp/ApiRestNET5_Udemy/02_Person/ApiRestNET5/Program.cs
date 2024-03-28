@@ -72,9 +72,21 @@ builder.Services.AddSwaggerGen(s =>
 });
 #endregion
 
+#region Enabling Cores
+builder.Services.AddCors(options => options.AddDefaultPolicy(b =>
+{
+	b.AllowAnyOrigin()
+	.AllowAnyMethod()
+	.AllowAnyHeader();
+}));
+#endregion
+
 var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+app.UseCors(); //It's necessary to be before Controllers and after UseHttpsRedirection
+
 app.MapControllers();
 app.MapControllerRoute("DefaultApi", "{controller=values}/v{version=apiVersion}/{id?}");
 
