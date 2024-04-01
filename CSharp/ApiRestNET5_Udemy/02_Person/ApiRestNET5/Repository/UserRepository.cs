@@ -21,6 +21,29 @@ namespace ApiRestNET5.Repository
 			return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == passCrypt));
 		}
 
+		public User? RefrashUserInfo(User user)
+		{
+			if (!_context.Users.Any(u => u.Id == user.Id)) return null;
+
+			var result = _context.Users.SingleOrDefault(u => u.Id == user.Id);
+			if(result != null)
+			{
+				try
+				{
+					_context.Entry(result).CurrentValues.SetValues(user);
+					_context.SaveChanges();
+					return result;
+				}
+				catch (Exception)
+				{
+					throw;
+				}
+			}
+			return result;
+		}
+
+		#region Private methods
+		
 		private string ComputeHash(string input, HashAlgorithm algorithm)
 		{
 			byte[] hashedBytes = algorithm.ComputeHash(Encoding.UTF8.GetBytes(input));
@@ -34,5 +57,7 @@ namespace ApiRestNET5.Repository
 
 			return sBuilder.ToString();
 		}
+
+		#endregion
 	}
 }
