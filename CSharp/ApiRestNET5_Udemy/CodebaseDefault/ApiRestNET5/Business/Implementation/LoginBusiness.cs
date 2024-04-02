@@ -40,6 +40,7 @@ namespace ApiRestNET5.Business.Implementation
 
 			user.RefrashToken = refreshToken;
 			user.RefrashTokenExpiryTime = expirationDate.ToString(DATE_FORMAT);
+			_userRepository.RefrashUserInfo(user);
 
 			return new TokenVO(
 				true,

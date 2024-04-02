@@ -1,15 +1,24 @@
 using ApiRestNET5.Business;
 using ApiRestNET5.Business.Implementation;
+using ApiRestNET5.Configurations;
 using ApiRestNET5.Hypermedia.Enricher;
 using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model.Context;
+using ApiRestNET5.Repository;
 using ApiRestNET5.Repository.Generic;
+using ApiRestNET5.Services;
+using ApiRestNET5.Services.Implamentations;
 using EvolveDb;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var appTitle = "REST API's from 0 to Azure with ASP.NET 5 and Docker";
@@ -18,6 +27,43 @@ var appDescription = $"API RESTful developed in course '{appTitle}'";
 
 builder.Services.AddRouting(option => option.LowercaseUrls = true); //Set all URL to lowercase
 builder.Services.AddControllers();
+
+#region Token Configuration
+var tokenConfiguration = new TokenConfiguration();
+new ConfigureFromConfigurationOptions<TokenConfiguration>(
+		builder.Configuration.GetSection("TokenConfiguration")
+).Configure(tokenConfiguration);
+#endregion
+
+#region Authentication
+builder.Services.AddAuthentication(option =>
+{
+	option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(option =>
+{
+	option.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidateIssuer = true,
+		ValidateAudience = true,
+		ValidateLifetime = true,
+		ValidateIssuerSigningKey = true,
+		ValidIssuer	= tokenConfiguration.Issuer,
+		ValidAudience = tokenConfiguration.Audience,
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.Secret))
+	};
+});
+#endregion
+
+#region Authorization
+builder.Services.AddAuthorization(auth =>
+{
+	auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+		.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+		.RequireAuthenticatedUser().Build());
+});
+#endregion
 
 #region MySQL
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
@@ -41,9 +87,14 @@ filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 #endregion
 
 #region Dependency Injection
+builder.Services.AddSingleton(tokenConfiguration);
+
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 
+builder.Services.AddTransient<ITokenService, TokenService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddSingleton(filterOptions);
