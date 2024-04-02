@@ -91,6 +91,7 @@ builder.Services.AddSingleton(tokenConfiguration);
 
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
+builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
 
 builder.Services.AddTransient<ITokenService, TokenService>();
 

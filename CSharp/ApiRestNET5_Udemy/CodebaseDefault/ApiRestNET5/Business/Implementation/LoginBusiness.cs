@@ -25,7 +25,7 @@ namespace ApiRestNET5.Business.Implementation
 		public TokenVO ValidateCredentials(UserVO userCredentials)
 		{
 			var user = _userRepository.ValidateCredentials(userCredentials);
-			if (user == null) return new TokenVO(false);
+			if (user == null) return null;
 
 			var claims = new List<Claim>
 			{
@@ -39,7 +39,7 @@ namespace ApiRestNET5.Business.Implementation
 			var expirationDate = createdDate.AddDays(_configuration.DaysToExpiry);
 
 			user.RefrashToken = refreshToken;
-			user.RefrashTokenExpiryTime = expirationDate.ToString(DATE_FORMAT);
+			user.RefrashTokenExpiryTime = expirationDate;
 			_userRepository.RefrashUserInfo(user);
 
 			return new TokenVO(

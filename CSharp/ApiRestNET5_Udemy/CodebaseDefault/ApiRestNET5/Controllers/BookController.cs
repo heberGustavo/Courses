@@ -3,14 +3,16 @@ using ApiRestNET5.Data.VO;
 using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiRestNET5.Controllers
 {
+	[ApiController]
 	[ApiVersion("1")]
 	[Route("api/[controller]/v{version:apiVersion}")]
-	[ApiController]
+	[Authorize("Bearer")]
 	public class BookController : ControllerBase
 	{
 		private readonly IBookBusiness _bookBusiness;

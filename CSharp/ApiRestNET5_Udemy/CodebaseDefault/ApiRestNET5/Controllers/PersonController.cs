@@ -3,13 +3,15 @@ using ApiRestNET5.Data.VO;
 using ApiRestNET5.Hypermedia.Filters;
 using ApiRestNET5.Model;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiRestNET5.Controllers
 {
-	[ApiVersion("1")]
 	[ApiController]
+	[ApiVersion("1")]
 	[Route("api/[controller]/v{version:apiVersion}")]
+	[Authorize("Bearer")]
 	public class PersonController : ControllerBase
 	{
 		private readonly ILogger<PersonController> _logger;
