@@ -24,6 +24,6 @@ namespace ApiRestNET5.Model
 		public string RefrashToken { get; set; }
 
 		[Column("refresh_token_expiry_time")]
-		public string RefrashTokenExpiryTime { get; set; }
+		public DateTime RefrashTokenExpiryTime { get; set; }
     }
 }
