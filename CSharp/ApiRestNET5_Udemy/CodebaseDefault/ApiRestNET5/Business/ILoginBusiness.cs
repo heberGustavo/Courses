@@ -6,5 +6,6 @@ namespace ApiRestNET5.Business
 	{
 		TokenVO ValidateCredentials(UserVO user);
 		TokenVO ValidateCredentials(TokenVO token);
+		bool RevokeToken(string userName);
 	}
 }

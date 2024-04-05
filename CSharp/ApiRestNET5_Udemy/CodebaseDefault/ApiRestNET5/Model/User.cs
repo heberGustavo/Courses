@@ -21,7 +21,7 @@ namespace ApiRestNET5.Model
 		public string Password { get; set; }
 
 		[Column("refresh_token")]
-		public string RefrashToken { get; set; }
+		public string? RefreshToken { get; set; }
 
 		[Column("refresh_token_expiry_time")]
 		public DateTime RefrashTokenExpiryTime { get; set; }

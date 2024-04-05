@@ -47,8 +47,18 @@ namespace ApiRestNET5.Repository
 			return result;
 		}
 
+		public bool RevokeToken(string userName)
+		{
+			var user = _context.Users.SingleOrDefault(u => u.UserName == userName);
+			if(user == null) return false;
+
+			user.RefreshToken = null;
+			_context.SaveChanges();
+			return true;
+		}
+
 		#region Private methods
-		
+
 		private string ComputeHash(string input, HashAlgorithm algorithm)
 		{
 			byte[] hashedBytes = algorithm.ComputeHash(Encoding.UTF8.GetBytes(input));

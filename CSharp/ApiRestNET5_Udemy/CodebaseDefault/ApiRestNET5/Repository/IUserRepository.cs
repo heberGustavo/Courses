@@ -8,5 +8,6 @@ namespace ApiRestNET5.Repository
 		User? ValidateCredentials(UserVO user);
 		User? ValidateCredentials(string userName);
 		User? RefrashUserInfo(User user);
+		bool RevokeToken(string userName);
     }
 }

@@ -38,7 +38,7 @@ namespace ApiRestNET5.Business.Implementation
 			var createdDate = DateTime.Now;
 			var expirationDate = createdDate.AddDays(_configuration.DaysToExpiry);
 
-			user.RefrashToken = refreshToken;
+			user.RefreshToken = refreshToken;
 			user.RefrashTokenExpiryTime = expirationDate;
 			_userRepository.RefrashUserInfo(user);
 
@@ -61,7 +61,7 @@ namespace ApiRestNET5.Business.Implementation
 
 			var user = _userRepository.ValidateCredentials(userName);
 			if (user == null ||
-			   user.RefrashToken != refreshToken ||
+			   user.RefreshToken != refreshToken ||
 			   user.RefrashTokenExpiryTime <= DateTime.Now) return null;
 
 
@@ -69,7 +69,7 @@ namespace ApiRestNET5.Business.Implementation
             var expirationDate = createdDate.AddDays(_configuration.DaysToExpiry);
 
 			refreshToken = _tokenService.GenerateRefreshToken();
-            user.RefrashToken = refreshToken;
+            user.RefreshToken = refreshToken;
             user.RefrashTokenExpiryTime = expirationDate;
             _userRepository.RefrashUserInfo(user);
 
@@ -81,5 +81,10 @@ namespace ApiRestNET5.Business.Implementation
                 refreshToken
             );
         }
+
+		public bool RevokeToken(string userName)
+		{
+			return _userRepository.RevokeToken(userName);
+		}
 	}
 }

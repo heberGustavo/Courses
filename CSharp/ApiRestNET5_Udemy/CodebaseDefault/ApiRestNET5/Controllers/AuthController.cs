@@ -1,6 +1,7 @@
 ﻿using ApiRestNET5.Business;
 using ApiRestNET5.Data.VO;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,5 +42,19 @@ namespace ApiRestNET5.Controllers
 
             return Ok(token);
         }
-    }
+
+		[HttpGet]
+		[Route("logout")]
+		[Authorize("Bearer")]
+		public IActionResult Revoke()
+		{
+			var userName = User.Identity.Name;
+			if (userName == null) return BadRequest();
+
+			var result = _loginBusiness.RevokeToken(userName);
+			if (!result) return BadRequest("Invalid request");
+
+			return NoContent();
+		}
+	}
 }
