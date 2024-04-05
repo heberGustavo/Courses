@@ -21,7 +21,12 @@ namespace ApiRestNET5.Repository
 			return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == passCrypt));
 		}
 
-		public User? RefrashUserInfo(User user)
+        public User? ValidateCredentials(string userName)
+        {
+            return _context.Users.SingleOrDefault(u => u.UserName == userName);
+        }
+
+        public User? RefrashUserInfo(User user)
 		{
 			if (!_context.Users.Any(u => u.Id == user.Id)) return null;
 

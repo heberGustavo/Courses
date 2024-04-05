@@ -50,5 +50,36 @@ namespace ApiRestNET5.Business.Implementation
 				refreshToken
 			);
 		}
+
+		public TokenVO ValidateCredentials(TokenVO token)
+		{
+			var accessToken = token.AccessToken;
+			var refreshToken = token.RefreshToken;
+
+			var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
+			var userName = principal.Identity.Name;
+
+			var user = _userRepository.ValidateCredentials(userName);
+			if (user == null ||
+			   user.RefrashToken != refreshToken ||
+			   user.RefrashTokenExpiryTime <= DateTime.Now) return null;
+
+
+            var createdDate = DateTime.Now;
+            var expirationDate = createdDate.AddDays(_configuration.DaysToExpiry);
+
+			refreshToken = _tokenService.GenerateRefreshToken();
+            user.RefrashToken = refreshToken;
+            user.RefrashTokenExpiryTime = expirationDate;
+            _userRepository.RefrashUserInfo(user);
+
+            return new TokenVO(
+                true,
+                createdDate.ToString(DATE_FORMAT),
+                expirationDate.ToString(DATE_FORMAT),
+                accessToken,
+                refreshToken
+            );
+        }
 	}
 }
