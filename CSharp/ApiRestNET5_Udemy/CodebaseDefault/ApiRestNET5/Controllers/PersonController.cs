@@ -73,6 +73,20 @@ namespace ApiRestNET5.Controllers
 			return Ok(_personBusiness.Update(model));
 		}
 
+		[HttpPatch("{id}")]
+		[ProducesResponseType((200), Type = typeof(PersonVO))]
+		[ProducesResponseType(204)]
+		[ProducesResponseType(400)]
+		[ProducesResponseType(401)]
+		[TypeFilter(typeof(HyperMediaFilter))]
+		public IActionResult Patch(int id)
+		{
+			var person = _personBusiness.Disable(id);
+			if (person == null) return NotFound();
+
+			return Ok(person);
+		}
+
 		[HttpDelete("{id}")]
 		[ProducesResponseType(204)]
 		[ProducesResponseType(400)]

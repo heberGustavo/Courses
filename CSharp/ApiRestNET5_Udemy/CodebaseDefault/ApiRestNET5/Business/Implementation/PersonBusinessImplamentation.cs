@@ -8,10 +8,10 @@ namespace ApiRestNET5.Business.Implementation
 {
 	public class PersonBusinessImplamentation : IPersonBusiness
 	{
-		private readonly IRepository<Person> _personRepository;
+		private readonly IPersonRepository _personRepository;
 		private readonly PersonConverter _converter;
 
-		public PersonBusinessImplamentation(IRepository<Person> personRepository)
+		public PersonBusinessImplamentation(IPersonRepository personRepository)
 		{
 			_personRepository = personRepository;
 			_converter = new PersonConverter();
@@ -41,8 +41,14 @@ namespace ApiRestNET5.Business.Implementation
 			return _converter.Parser(personEntity);
 		}
 
+		public PersonVO Disable(long id)
+		{
+			var personEntity = _personRepository.Disable(id);
+			return _converter.Parser(personEntity);
+		}
+
 		public void Delete(long id) => _personRepository.Delete(id);
-		
+
 		#endregion
 
 	}

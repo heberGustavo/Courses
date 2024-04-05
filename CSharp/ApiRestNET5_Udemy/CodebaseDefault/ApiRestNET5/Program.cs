@@ -88,17 +88,17 @@ filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 
 #region Dependency Injection
 builder.Services.AddSingleton(tokenConfiguration);
+builder.Services.AddSingleton(filterOptions);
+builder.Services.AddTransient<ITokenService, TokenService>();
 
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
 
-builder.Services.AddTransient<ITokenService, TokenService>();
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
-builder.Services.AddSingleton(filterOptions);
 #endregion
 
 #region Versioning

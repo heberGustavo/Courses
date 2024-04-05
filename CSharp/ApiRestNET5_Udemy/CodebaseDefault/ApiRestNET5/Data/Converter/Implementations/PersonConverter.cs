@@ -40,7 +40,8 @@ namespace ApiRestNET5.Data.Converter.Implementations
 				FirstName = origem.FirstName,
 				LastName = origem.LastName,
 				Gender = origem.Gender,
-				Address = origem.Address
+				Address = origem.Address,
+				Enabled = origem.Enabled
 			};
 		}
 
