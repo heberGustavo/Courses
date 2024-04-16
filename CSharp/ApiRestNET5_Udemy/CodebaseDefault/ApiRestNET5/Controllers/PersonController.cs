@@ -51,6 +51,18 @@ namespace ApiRestNET5.Controllers
 			return Ok(person);
 		}
 
+		[HttpGet("findByName")]
+		[ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+		[ProducesResponseType(204)]
+		[ProducesResponseType(400)]
+		[ProducesResponseType(401)]
+		public IActionResult Get([FromQuery] string? firstName, [FromQuery] string? lastName)
+		{
+			var persons = _personBusiness.FindByName(firstName, lastName);
+			if(persons == null) return NotFound();
+			return Ok(persons);
+		}
+
 		[HttpPost]
 		[ProducesResponseType((200), Type = typeof(PersonVO))]
 		[ProducesResponseType(400)]

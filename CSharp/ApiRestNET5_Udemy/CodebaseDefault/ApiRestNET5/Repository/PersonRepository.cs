@@ -1,6 +1,7 @@
 ﻿using ApiRestNET5.Model;
 using ApiRestNET5.Model.Context;
 using ApiRestNET5.Repository.Generic;
+using System.Xml.Linq;
 
 namespace ApiRestNET5.Repository
 {
@@ -30,5 +31,11 @@ namespace ApiRestNET5.Repository
 			}
 			return person;
 		}
+
+		public List<Person> FindByFirstLastName(string firstName, string lastName) => _context.Persons.Where(p => p.FirstName.Contains(firstName) && p.LastName.Contains(lastName)).ToList();
+
+		public List<Person> FindByFirstName(string firstName) => _context.Persons.Where(p => p.FirstName.Contains(firstName)).ToList();
+
+		public List<Person> FindByLastName(string lastName) => _context.Persons.Where(p => p.LastName.Contains(lastName)).ToList();
 	}
 }

@@ -23,6 +23,18 @@ namespace ApiRestNET5.Business.Implementation
 
 		public PersonVO FindById(long id) => _converter.Parser(_personRepository.FindById(id));
 
+		public List<PersonVO> FindByName(string firstName, string lastName)
+		{
+			if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+				return _converter.Parser(_personRepository.FindByFirstLastName(firstName, lastName));
+			else if (!string.IsNullOrWhiteSpace(firstName))
+				return _converter.Parser(_personRepository.FindByFirstName(firstName));
+			else if (!string.IsNullOrWhiteSpace(lastName))
+				return _converter.Parser(_personRepository.FindByLastName(firstName));
+			else
+				return null;
+		}
+
 		#endregion
 
 		#region Write
