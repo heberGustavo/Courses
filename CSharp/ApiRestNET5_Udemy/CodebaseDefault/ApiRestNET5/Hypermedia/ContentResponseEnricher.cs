@@ -1,4 +1,5 @@
 ﻿using ApiRestNET5.Hypermedia.Abstract;
+using ApiRestNET5.Hypermedia.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -12,7 +13,7 @@ namespace ApiRestNET5.Hypermedia
 
         public bool CanEnrich(Type contextType)
 		{
-			return contextType == typeof(T) || contextType == typeof(List<T>);
+			return contextType == typeof(T) || contextType == typeof(List<T>) || contextType == typeof(PagedSeachVO<T>);
 		}
 
 		protected abstract Task EnrichModel(T content, IUrlHelper urlHelper);
@@ -37,6 +38,13 @@ namespace ApiRestNET5.Hypermedia
 				{
 					ConcurrentBag<T> bag = new ConcurrentBag<T>(collection);
 					Parallel.ForEach(bag, (element) =>
+					{
+						EnrichModel(element, urlHelper);
+					});
+				}
+				else if (okObjectResult.Value is PagedSeachVO<T> pagedSeach)
+				{
+					Parallel.ForEach(pagedSeach.List.ToList(), (element) =>
 					{
 						EnrichModel(element, urlHelper);
 					});

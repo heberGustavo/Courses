@@ -22,7 +22,28 @@ namespace ApiRestNET5.Repository.Generic
 
 		public T FindById(long id) => _dataset.SingleOrDefault(p => p.Id == id);
 
+		public List<T> FindWithPagedSeach(string query) => _dataset.FromSqlRaw<T>(query).ToList();
+
+		public int GetCount(string query)
+		{
+			var result = string.Empty;
+
+			using (var connection = _context.Database.GetDbConnection())
+			{
+				connection.Open();
+				using (var command = connection.CreateCommand())
+				{
+					command.CommandText = query;
+					result = command.ExecuteScalar().ToString();
+				}
+			}
+
+			return int.Parse(result);
+		}
+
 		#endregion
+
+		#region Write
 
 		public T Create(T item)
 		{
@@ -74,10 +95,13 @@ namespace ApiRestNET5.Repository.Generic
 			else
 				return null;
 		}
-		
+
+		#endregion
+
 		public bool Exists(long id)
 		{
 			return _dataset.Any(p => p.Id.Equals(id));
 		}
+
 	}
 }
