@@ -7,10 +7,8 @@ namespace ApiRestNET5.Hypermedia.Utils
         public int CurrentPage { get; set; }
         public int PageSize { get; set; }
         public int TotalResults { get; set; }
-        public string SortFields { get; set; }
         public string SortDirections { get; set; }
 
-        public Dictionary<string, Object> Filters { get; set; }
         public List<T> List { get; set; }
 
 		#region Constructors
@@ -21,13 +19,7 @@ namespace ApiRestNET5.Hypermedia.Utils
 		{
 			CurrentPage = currentPage;
 			PageSize = pageSize;
-			SortFields = sortFields;
 			SortDirections = sortDirections;
-		}
-
-		public PagedSeachVO(int currentPage, int pageSize, string sortFields, string sortDirections, Dictionary<string, object> filters) : this(currentPage, pageSize, sortFields, sortDirections)
-		{
-			Filters = filters;
 		}
 
 		public PagedSeachVO(int currentPage, string sortFields, string sortDirections)
