@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -87,6 +88,9 @@ filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 #endregion
 
 #region Dependency Injection
+
+builder.Services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddSingleton(tokenConfiguration);
 builder.Services.AddSingleton(filterOptions);
 builder.Services.AddTransient<ITokenService, TokenService>();
@@ -94,6 +98,7 @@ builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplamentation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplamentation>();
 builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
+builder.Services.AddScoped<IFileBusiness, FileBusinessImplementation>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
