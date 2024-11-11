@@ -1,0 +1,11 @@
+.boxWhite{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+}
+
+.boxBlack{
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+}

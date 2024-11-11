@@ -1,0 +1,15 @@
+.red{
+    color: red;
+    font-weight: 700;
+}
+
+.blue{
+    color: blue;
+    font-weight: 700;
+}
+
+.gray{
+    color: white;
+    background: gray;
+    font-weight: 700;
+}
