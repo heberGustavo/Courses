@@ -1,8 +1,0 @@
-***** CRIAÇÃO ESTRUTURA INICIAL *****
-mkdir 01_Primeiro-Projeto
-cd 01_Primeiro-Projeto
-npm init -y
-npm install -D typescript
-npx tsc --init
-mkdir src dist src/models src/services
-
