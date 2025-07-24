@@ -9,9 +9,11 @@ import { Todo } from '../models/todo.model';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   private KEY_LOCAL_STORAGE = "todos";
   
+  public modeScreen = "list";
   public todos: Todo[] = [];
   public title: string = "Minhas tarefas";
   public form: FormGroup;
@@ -34,6 +36,7 @@ export class AppComponent {
 
     this.todos.push(new Todo(idProximoItem, title, false));
     this.save();
+    this.changeMode("list");
     this.clearForm();
   }
 
@@ -69,6 +72,10 @@ export class AppComponent {
   markAsUndone(todo: Todo){
     todo.done = false;
     this.save();
+  }
+
+  changeMode(key: string){
+    this.modeScreen = key;
   }
 
   clearForm(){

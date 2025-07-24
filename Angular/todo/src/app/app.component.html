@@ -1,20 +1,28 @@
-<h1>{{title}}</h1>
-<button (click)="reloadScreen()">Recarregar tela</button>
-<button *ngIf="todos.length <= 0"(click)="addMook()">Buscar dados do banco</button>
+<h1 class="title">{{title}}</h1>
+<button class="button" (click)="reloadScreen()">Recarregar tela</button>
+<button class="button" *ngIf="todos.length <= 0"(click)="addMook()">Buscar dados do banco</button>
 
-<ul>
-  <li *ngFor="let todo of todos">{{todo.id}}. {{todo.title}}
-    <button (click)="markAsDone(todo)" *ngIf="!todo.done">CONCLUIR</button> |
-    <button (click)="markAsUndone(todo)" *ngIf="todo.done">REFAZER</button> |
-    <button (click)="remove(todo)">REMOVER</button>
+<ul *ngIf="modeScreen === 'list'">
+  <li *ngFor="let todo of todos">{{todo.title}}
+    <button class="color-green" (click)="markAsDone(todo)" *ngIf="!todo.done"><i class="fa-solid fa-check"></i> Concluir</button>
+    <button class="color-orange" (click)="markAsUndone(todo)" *ngIf="todo.done"><i class="fa-solid fa-circle-notch"></i> Refazer</button>
+    <button class="color-red" (click)="remove(todo)"><i class="fa-solid fa-trash"></i> Remover</button>
   </li>
+
+  <div class="text-align-center mt-20">
+    <button class="button" (click)="changeMode('add')">Adicionar tarefa</button>
+  </div>
 </ul>
 
-<form [formGroup]="form">
+<form id="modal" *ngIf="modeScreen === 'add'" [formGroup]="form">
   <fieldset>
     <label>Tarefa: </label>
     <input type="text" placeholder="Título da tarefa" maxlength="60" formControlName="title">
-    <small *ngIf="form.controls['title'].invalid && !form.controls['title'].pristine">Este campo deve conter entre 3 e 60 caracteres!</small>    
-    <button [disabled]="form.invalid" (click)="add()">Salvar</button>
+    <small class="danger" *ngIf="form.controls['title'].invalid && !form.controls['title'].pristine">Este campo deve conter entre 3 e 60 caracteres!</small>    
+    <button class="button" [disabled]="form.invalid" (click)="add()">Salvar</button>
   </fieldset>
+
+  <div class="text-align-center mt-20">
+    <button class="button" (click)="changeMode('list')">Ver minhas tarefas</button>
+  </div>
 </form>
