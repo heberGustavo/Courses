@@ -25,6 +25,23 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  search(event: Event){
+    const target = event.target as HTMLInputElement;
+    const value = target.value.toLowerCase();
+
+    this.usuarios = this.usuariosGeral.filter(usuario => {
+      return usuario.nomeCompleto.toLowerCase().includes(value);
+    });
+  }
+
+  deletarUsuario(id: number | undefined){
+    console.log("dasd");
+    this.serviceUsuario.DeletarUsuario(id).subscribe(response => {
+      this.usuarios = response.dados;
+      this.usuariosGeral = response.dados;
+    });
+  }
+
   getSituacaoDescricao(situacao: boolean): string{
     return situacao ? "Ativo" : "Inativo";
   }
