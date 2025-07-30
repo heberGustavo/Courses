@@ -25,7 +25,7 @@ namespace CrudDapper.Services
 			{
 				var usuariosBanco = await conn.QueryAsync<Usuario>("SELECT * FROM Usuarios");
 
-				if (usuariosBanco.Count() > 0)
+				if (usuariosBanco.Count() <= 0)
 				{
 					response.Mensagem = "Nenhum usuário localizado!";
 					response.Status = false;

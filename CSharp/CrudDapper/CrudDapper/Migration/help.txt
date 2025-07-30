@@ -1,0 +1,4 @@
+===> HELP 
+
+1. Atualizar a string de conexão
+2. Executar os scripts manualmente dentro do banco
