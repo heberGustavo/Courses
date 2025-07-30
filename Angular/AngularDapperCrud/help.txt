@@ -1,0 +1,8 @@
+===> HELP <===
+
+1. Criar components: ng g c pages/home
+2. Criar serviços: ng g s servicos/usuario
+3. Criar envionments: ng g environments
+4. Para fazer requisições preciso do HTTP CLIENT
+    - Tem que entrar em "app > app.config.ts" e dentro de providers adicionar "provideHttpClient()"
+    - Entrar no serviço e adicionar no construtor
