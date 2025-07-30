@@ -7,4 +7,4 @@
 	Salario decimal,
 	Situacao bit,
 	Senha varchar(100),
-)
+);
