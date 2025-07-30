@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
       this.usuariosGeral = response.dados;
     });
   }
+
+  getSituacaoDescricao(situacao: boolean): string{
+    return situacao ? "Ativo" : "Inativo";
+  }
 }

@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="container mt-5">
+    <button class="btn btn-success w-100">Cadastrar novo Usuário</button>
+    <div>
+        <label class="form-label">Pesquisar:</label>
+        <input class="form-control" type="text" placeholder="Qual usuário deseja buscar?" />
+    </div>
+    <table class="table table-hover table-bordered mt-5">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome Completo</th>
+                <th>Email</th>
+                <th>Cargo</th>
+                <th>Salário</th>
+                <th>Situação</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(usuarios.length > 0){
+                @for (usuario of usuarios; track $index) {
+                    <tr>
+                        <td>{{usuario.id}}</td>
+                        <td>{{usuario.nomeCompleto}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>{{usuario.cargo}}</td>
+                        <td>{{usuario.salario}}</td>
+                        <td>{{getSituacaoDescricao(usuario.situacao)}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning mx-2">Editar</button>
+                            <button class="btn btn-sm btn-info mx-2">Detalhes</button>
+                            <button class="btn btn-sm btn-danger mx-2">Excluir</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
