@@ -18,6 +18,10 @@ export class UsuarioService {
     return this.http.get<Response<UsuarioListar[]>>(this.ApiUrl);
   }
 
+  GetUsuarioPorId(id: number) : Observable<Response<UsuarioListar>>{
+    return this.http.get<Response<UsuarioListar>>(`${this.ApiUrl}/${id}`);
+  }
+
   DeletarUsuario(id: number | undefined): Observable<Response<UsuarioListar[]>>{
     return this.http.delete<Response<UsuarioListar[]>>(`${this.ApiUrl}/${id}`);
   }

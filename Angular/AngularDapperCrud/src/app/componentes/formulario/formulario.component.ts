@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioListar } from '../../models/Usuario';
@@ -11,20 +11,24 @@ import { UsuarioListar } from '../../models/Usuario';
 })
 export class FormularioComponent implements OnInit {
 
+  @Input() btnAcao!: string;
+  @Input() descricaoTitulo!: string;
+  
+  @Input() dadosUsuario: UsuarioListar | null = null;
   @Output() onSubmit = new EventEmitter<UsuarioListar>();
 
   usuarioForm!: FormGroup;
 
   ngOnInit(): void {
     this.usuarioForm = new FormGroup({
-      id: new FormControl(0),
-      nomeCompleto: new FormControl(""),
-      email: new FormControl(""),
-      cargo: new FormControl(""),
-      salario: new FormControl(0),
-      cpf: new FormControl(""),
-      situacao: new FormControl(true),
-      senha: new FormControl(""),
+      id: new FormControl(this.dadosUsuario ? this.dadosUsuario.id : 0),
+      nomeCompleto: new FormControl(this.dadosUsuario ? this.dadosUsuario.nomeCompleto : ""),
+      email: new FormControl(this.dadosUsuario ? this.dadosUsuario.email : ""),
+      cargo: new FormControl(this.dadosUsuario ? this.dadosUsuario.cargo : ""),
+      salario: new FormControl(this.dadosUsuario ? this.dadosUsuario.salario : 0),
+      cpf: new FormControl(this.dadosUsuario ? this.dadosUsuario.cpf : ""),
+      situacao: new FormControl(this.dadosUsuario ? this.dadosUsuario.situacao : true),
+      senha: new FormControl(this.dadosUsuario ? this.dadosUsuario.senha : ""),
     });
   }
 

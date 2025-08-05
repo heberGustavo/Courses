@@ -44,9 +44,9 @@ namespace CrudDapper.Services
 			return response;
 		}
 
-		public async Task<ResponseModel<UsuarioListarDTO>> BuscarUsuariosPorId(int id)
+		public async Task<ResponseModel<Usuario>> BuscarUsuariosPorId(int id)
 		{
-			var response = new ResponseModel<UsuarioListarDTO>();
+			var response = new ResponseModel<Usuario>();
 
 			using (var conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
 			{
@@ -59,9 +59,7 @@ namespace CrudDapper.Services
 					return response;
 				}
 
-				var usuarioMapeado = _mapper.Map<UsuarioListarDTO>(usuario);
-
-				response.Dados = usuarioMapeado;
+				response.Dados = usuario;
 				response.Mensagem = "Usuário localizado!";
 			}
 
