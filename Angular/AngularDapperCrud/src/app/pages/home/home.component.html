@@ -25,11 +25,11 @@
                         <td>{{usuario.nomeCompleto}}</td>
                         <td>{{usuario.email}}</td>
                         <td>{{usuario.cargo}}</td>
-                        <td>{{usuario.salario}}</td>
+                        <td>R$ {{usuario.salario.toFixed(2)}}</td>
                         <td>{{getSituacaoDescricao(usuario.situacao)}}</td>
                         <td>
                             <button class="btn btn-warning mx-2" [routerLink]="['/editar', usuario.id]">Editar</button>
-                            <button class="btn btn-info mx-2">Detalhes</button>
+                            <button class="btn btn-info mx-2" [routerLink]="['/detalhes', usuario.id]">Detalhes</button>
                             <button class="btn btn-danger mx-2" (click)="deletarUsuario(usuario.id)">Excluir</button>
                         </td>
                     </tr>

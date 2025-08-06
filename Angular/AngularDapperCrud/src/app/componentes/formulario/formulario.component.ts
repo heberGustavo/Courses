@@ -13,26 +13,27 @@ export class FormularioComponent implements OnInit {
 
   @Input() btnAcao!: string;
   @Input() descricaoTitulo!: string;
-  
+  @Input() desativarCampo: boolean = false;
   @Input() dadosUsuario: UsuarioListar | null = null;
+
   @Output() onSubmit = new EventEmitter<UsuarioListar>();
 
   usuarioForm!: FormGroup;
 
   ngOnInit(): void {
     this.usuarioForm = new FormGroup({
-      id: new FormControl(this.dadosUsuario ? this.dadosUsuario.id : 0),
-      nomeCompleto: new FormControl(this.dadosUsuario ? this.dadosUsuario.nomeCompleto : ""),
-      email: new FormControl(this.dadosUsuario ? this.dadosUsuario.email : ""),
-      cargo: new FormControl(this.dadosUsuario ? this.dadosUsuario.cargo : ""),
-      salario: new FormControl(this.dadosUsuario ? this.dadosUsuario.salario : 0),
-      cpf: new FormControl(this.dadosUsuario ? this.dadosUsuario.cpf : ""),
-      situacao: new FormControl(this.dadosUsuario ? this.dadosUsuario.situacao : true),
-      senha: new FormControl(this.dadosUsuario ? this.dadosUsuario.senha : ""),
+      id: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.id : 0, disabled: this.desativarCampo }),
+      nomeCompleto: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.nomeCompleto : "", disabled: this.desativarCampo }),
+      email: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.email : "", disabled: this.desativarCampo }),
+      cargo: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.cargo : "", disabled: this.desativarCampo }),
+      salario: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.salario : 0, disabled: this.desativarCampo}),
+      cpf: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.cpf : "", disabled: this.desativarCampo }),
+      situacao: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.situacao : true, disabled: this.desativarCampo }),
+      senha: new FormControl({ value: this.dadosUsuario ? this.dadosUsuario.senha : "", disabled: this.desativarCampo }),
     });
   }
 
-  submit(){
+  submit() {
     //envia os dados para o component que esta chamando
     this.onSubmit.emit(this.usuarioForm.value);
   }
