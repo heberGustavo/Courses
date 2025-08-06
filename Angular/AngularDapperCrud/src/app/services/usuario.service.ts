@@ -29,4 +29,8 @@ export class UsuarioService {
   CriarUsuario(usuario: UsuarioListar): Observable<Response<UsuarioListar>>{
     return this.http.post<Response<UsuarioListar>>(this.ApiUrl, usuario);
   }
+
+  EditarUsuario(usuario: UsuarioListar): Observable<Response<UsuarioListar>>{
+    return this.http.put<Response<UsuarioListar>>(this.ApiUrl, usuario);
+  }
 }

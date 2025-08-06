@@ -27,4 +27,10 @@ export class EditarComponent implements OnInit{
     });
   }
 
+  editarUsuario(usuario: UsuarioListar){
+    this.usuarioService.EditarUsuario(usuario).subscribe(response => {
+      this.router.navigate(['/']);
+    });
+  }
+
 }
