@@ -18,6 +18,12 @@ export class CadastroComponent {
   constructor(private usuarioService: UsuarioService, private router: Router){}
 
   criarUsuario(usuario: UsuarioListar){
+
+    if(usuario.situacao == null){
+      alert("É necessário preencher o campo Situação");
+      return;
+    }
+    
     this.usuarioService.CriarUsuario(usuario).subscribe(response => {
       this.router.navigate(['/']);
     });

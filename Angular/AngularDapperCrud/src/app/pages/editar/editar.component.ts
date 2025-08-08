@@ -25,9 +25,15 @@ export class EditarComponent implements OnInit{
     this.usuarioService.GetUsuarioPorId(id).subscribe(response => {
       this.usuario = response.dados;
     });
+
   }
 
   editarUsuario(usuario: UsuarioListar){
+    if(usuario.situacao == null){
+      alert("É necessário preencher o campo Situação");
+      return;
+    }
+    
     this.usuarioService.EditarUsuario(usuario).subscribe(response => {
       this.router.navigate(['/']);
     });
