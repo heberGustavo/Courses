@@ -1,59 +1,45 @@
-# AngularDapperCrud
+<h1 align="center">
+  Cadastro de Usuários - CRUD com API
+</h1>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+<p align="center">
+  Esse sistema é um cadastro de usuários usando API C#
+</p>
 
-## Development server
 
-To start a local development server, run:
+</br>
+  
+<p align="center">
+   <a href="#round_pushpin-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wrench-How-to-use">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
 
-```bash
-ng serve
-```
+## :round_pushpin: Demo
+<img width="1101" height="328" alt="image" src="https://github.com/user-attachments/assets/fe5db7f0-a1b0-456a-b6e0-64585c9d6a25" />
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## :wrench: How to use
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Clone that application using [Git](https://git-scm.com) and follow the next steps:
 
 ```bash
-ng build
+# 1. Clone esse repositório 
+
+# 2. Abra o projeto no Visual Studio Code
+
+# 3. Altere a URL da API:
+#  3.1 - src > environments
+
+# 4. Clonar e executar o projeto backend
+$ https://github.com/heberGustavo/Courses/tree/main/CSharp/CrudDapper/CrudDapper
+
+# 3. Para rodar a aplicação Angular
+$ ng serve
+
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Autor
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| [<img src="https://avatars.githubusercontent.com/u/44476616?v=4" style="max-width: 100%;width: 90px;"><br><sub>Heber Gustavo</sub>](https://github.com/heberGustavo) |
+| :---: |
+|[Linkedin](https://www.linkedin.com/in/heber-gustavo/)|
