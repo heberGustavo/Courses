@@ -1,59 +1,35 @@
-# Todo
+<h1 align="center">
+  TODO
+</h1>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+</br>
+  
+<p align="center">
+   <a href="#round_pushpin-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wrench-How-to-use">Como usar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
-## Development server
+## :round_pushpin: Demo
+<img width="736" height="645" alt="image" src="https://github.com/user-attachments/assets/9abd69cd-174c-4abb-bece-f0aca232c2a0" />
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## :wrench: Como usar
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Clone that application using [Git](https://git-scm.com) and follow the next steps:
 
 ```bash
-ng generate --help
+# 1. Clone esse repositório 
+
+# 2. Abra o projeto no Visual Studio Code
+
+# 3. Para rodar a aplicação Angular
+$ ng serve
+
 ```
 
-## Building
+## Autor
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| [<img src="https://avatars.githubusercontent.com/u/44476616?v=4" style="max-width: 100%;width: 90px;"><br><sub>Heber Gustavo</sub>](https://github.com/heberGustavo) |
+| :---: |
+|[Linkedin](https://www.linkedin.com/in/heber-gustavo/)|
