@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { Animal } from '../../interfaces/Animal';
+
 @Component({
   selector: 'app-list-render',
   imports: [CommonModule],
@@ -8,10 +10,16 @@ import { Component } from '@angular/core';
   styleUrl: './list-render.component.css'
 })
 export class ListRenderComponent {
-  animais = [
-    { name: "Tuco", type: "Dog"},
-    { name: "Papa", type: "Bird"},
-    { name: "Alfredo", type: "Dog"},
-    { name: "Moly", type: "Horse"},
+  animalsDetails: string = '';
+
+  animais: Animal[] = [
+    { name: "Tuco", type: "Dog", age: 12 },
+    { name: "Papa", type: "Bird", age: 3 },
+    { name: "Alfredo", type: "Dog", age: 6 },
+    { name: "Moly", type: "Horse", age: 10 },
   ];
+
+  showAge(animal: Animal): void {
+    this.animalsDetails = `O animal ${animal.name} tem ${animal.age} anos de idade!`;
+  }
 }
