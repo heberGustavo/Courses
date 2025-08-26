@@ -7,10 +7,11 @@ import { IfRenderComponent } from "./components/if-render/if-render.component";
 import { EventsComponent } from "./components/events/events.component";
 import { EmitterComponent } from "./components/emitter/emitter.component";
 import { ListRenderComponent } from "./components/list-render/list-render.component";
+import { PipesComponent } from "./components/pipes/pipes.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventsComponent, EmitterComponent, ListRenderComponent],
+  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventsComponent, EmitterComponent, ListRenderComponent, PipesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
