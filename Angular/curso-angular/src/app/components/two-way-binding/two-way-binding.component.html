@@ -1,0 +1,24 @@
+<div class="class">
+    <h3>Two way data-binding</h3>
+
+    <form>
+        <input 
+            type="text" 
+            name="user"
+            [(ngModel)]="user"
+            placeholder="Informe o usuário"
+        >
+
+        <input 
+            type="text"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Informe a senha"
+        >
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <p>{{user}}</p>
+    <p>{{password}}</p>
+</div>
