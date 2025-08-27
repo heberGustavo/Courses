@@ -1,11 +1,26 @@
-<app-first-component></app-first-component>
-<app-parent-data [name]="userName" [email]="userEmail" [userData]="userFullData"></app-parent-data>
-<app-directives></app-directives>
-<app-if-render></app-if-render>
-<app-events></app-events>
-<app-emitter></app-emitter>
-<app-list-render></app-list-render>
-<app-pipes></app-pipes>
-<app-two-way-binding></app-two-way-binding>
+<p>header</p>
 
+<nav>
+    <a routerLink="/">Home</a>
+    <br>
+    <a routerLink="/list">Lista</a>
+    <br>
+    <a routerLink="/change-number">Change number</a>
+    <br>
+    <a routerLink="/directives">Directives</a>
+    <br>
+    <a routerLink="/emitter">Emitter</a>
+    <br>
+    <a routerLink="/events">Events</a>
+    <br>
+    <a routerLink="/if-render">If-render</a>
+    <br>
+    <a routerLink="/pipes">Pipes</a>
+    <br>
+    <a routerLink="/two-way-data-binding">Two Way data-binding</a>
+</nav>
+
+<br>
 <router-outlet />
+<br>
+<app-parent-data [name]="userName" [email]="userEmail" [userData]="userFullData"></app-parent-data>
