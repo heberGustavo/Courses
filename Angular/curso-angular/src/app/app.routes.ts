@@ -8,10 +8,12 @@ import { EventsComponent } from './components/events/events.component';
 import { IfRenderComponent } from './components/if-render/if-render.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { TwoWayBindingComponent } from './components/two-way-binding/two-way-binding.component';
+import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 
 export const routes: Routes = [
     { path: '', component: FirstComponentComponent },
     { path: 'list', component: ListRenderComponent },
+    { path: 'list/:id', component: ItemDetailComponent },
     { path: 'change-number', component: ChangeNumberComponent },
     { path: 'directives', component: DirectivesComponent },
     { path: 'emitter', component: EmitterComponent },

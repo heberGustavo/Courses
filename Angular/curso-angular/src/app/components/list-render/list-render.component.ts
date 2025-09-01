@@ -3,24 +3,22 @@ import { Component } from '@angular/core';
 
 import { Animal } from '../../interfaces/Animal';
 import { ListService } from '../../services/list.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-list-render',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './list-render.component.html',
   styleUrl: './list-render.component.css'
 })
 export class ListRenderComponent {
   animalsDetails: string = '';
 
-  animais: Animal[] = [
-    { name: "Tuco", type: "Dog", age: 12 },
-    { name: "Papa", type: "Bird", age: 3 },
-    { name: "Alfredo", type: "Dog", age: 6 },
-    { name: "Moly", type: "Horse", age: 10 },
-  ];
+  animais: Animal[] = [];
 
-  constructor(private listService: ListService){}
+  constructor(private listService: ListService){
+    this.getAnimals();
+  }
 
   showAge(animal: Animal): void {
     this.animalsDetails = `O animal ${animal.name} tem ${animal.age} anos de idade!`;
@@ -30,4 +28,9 @@ export class ListRenderComponent {
     console.log("Remover Animal");
     this.animais = this.listService.remover(this.animais, animal);
   }
+
+  getAnimals(): void {
+    this.listService.getAll().subscribe((x) => this.animais = x);
+  }
+
 }
