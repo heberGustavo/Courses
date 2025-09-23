@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatSliderModule} from '@angular/material/slider';
+
 import { CardComponent } from '../card/card.component';
 import { CardButtonComponent } from '../card-button/card-button.component';
 
@@ -9,7 +11,8 @@ import { CardButtonComponent } from '../card-button/card-button.component';
     CardButtonComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSliderModule,
   ],
   exports: [
     CardComponent,

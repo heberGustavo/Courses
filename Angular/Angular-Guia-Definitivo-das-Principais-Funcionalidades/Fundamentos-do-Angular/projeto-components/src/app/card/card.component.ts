@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
+  tipo: string = "Simpes Teste";
+  valor: number = 1000;
 
+  getValor(){
+    return `R$ ${this.valor},00`;
+  }
 }

@@ -20,3 +20,7 @@
         font-size: 40px;
     }
 }
+
+:host ::ng-deep .mdc-slider .mdc-slider__track--active_fill{
+    border-color: aqua !important;
+}
