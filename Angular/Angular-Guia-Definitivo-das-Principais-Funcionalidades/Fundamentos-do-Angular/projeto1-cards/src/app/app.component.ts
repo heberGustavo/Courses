@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'projeto1-cards';
+
+  cardColorRed = 'card-red';
+  cardColorGreen = 'card-green';
+  cardColorBrown = 'card-brown';
+  cardColorYellow = 'card-yellow';
 }
