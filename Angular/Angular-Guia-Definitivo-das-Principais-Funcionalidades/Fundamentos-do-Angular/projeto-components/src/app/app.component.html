@@ -6,3 +6,11 @@
   ></app-card>
   <app-card [cardPlanType]="cardPlanTypeCompleto"></app-card>
 </div>
+
+<br />
+<input
+  #meuInput
+  type="text"
+  placeholder="Informe o nome do Card 1"
+  (keyup)="handleCardName1(meuInput.value)"
+/>

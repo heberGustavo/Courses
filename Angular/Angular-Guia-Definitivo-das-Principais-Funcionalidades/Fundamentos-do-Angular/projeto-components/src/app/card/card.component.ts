@@ -6,9 +6,19 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  @Input({ required: true }) cardPlanType: string = '';
   @Input() cardPlanValue: number = 0;
   @Input() cardColor: string = 'card-green';
+  
+  private _cardPlanType: string = '';
+
+  @Input({ required: true }) 
+  set cardPlanType(value: string){
+    this._cardPlanType = value.toUpperCase();
+  }
+
+  get cardPlanType(){
+    return this._cardPlanType;
+  }
 
   getValor() {
     return `R$ ${this.cardPlanValue},00`;
