@@ -1,16 +1,29 @@
 <div class="cards-container">
   <app-card
-    [cardPlanType]="cardPlanTypeSimple"
+    [cardPlanType]="cardPlanType1"
     [cardPlanValue]="cardPlanValue"
     [cardColor]="cardColorRed"
+    [testMessageWithTransform]="cardMessageInfo"
   ></app-card>
-  <app-card [cardPlanType]="cardPlanTypeCompleto"></app-card>
+  <app-card
+    [cardPlanType]="cardPlanType2"
+    [testMessageWithTransform]="cardMessageInfo"
+  ></app-card>
 </div>
 
 <br />
 <input
-  #meuInput
+  #meuInputType
   type="text"
-  placeholder="Informe o nome do Card 1"
-  (keyup)="handleCardName1(meuInput.value)"
+  placeholder="Informe o tipo do Card 1"
+  (keyup)="handleCardType1(meuInputType.value)"
+/>
+
+<br /><br />
+
+<input
+  #meuInputInfo
+  type="text"
+  placeholder="Info para Cards"
+  (keyup)="handleCardInfo(meuInputInfo.value)"
 />

@@ -8,13 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'projeto-components';
 
-  cardPlanTypeSimple: string = 'Simples';
-  cardPlanTypeCompleto: string = 'Completo';
+  cardPlanType1: string = 'Simples';
+  cardPlanType2: string = 'Completo';
 
   cardPlanValue: number = 100;
   cardColorRed: string = 'card-red';
+  cardMessageInfo: string = 'Minha informação exemplo'
 
-  handleCardName1(value: string) {
-    this.cardPlanTypeSimple = value;
+  handleCardType1(value: string) {
+    this.cardPlanType1 = value;
+  }
+
+  handleCardInfo(value: string) {
+    this.cardMessageInfo = value;
   }
 }

@@ -1,5 +1,11 @@
 import { Component, Input } from '@angular/core';
 
+function transformToLowerCase(value: string){
+  ///.....
+  console.log(value);
+  return value.toLowerCase();
+}
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -9,6 +15,10 @@ export class CardComponent {
   @Input() cardPlanValue: number = 0;
   @Input() cardColor: string = 'card-green';
   
+  //WITH TRANSFORM
+  @Input({required: true, transform: (value: string) => transformToLowerCase(value)}) testMessageWithTransform: string = '';
+
+  //WITH SET AND GET
   private _cardPlanType: string = '';
 
   @Input({ required: true }) 
