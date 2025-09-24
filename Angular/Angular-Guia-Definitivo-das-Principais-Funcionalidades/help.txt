@@ -4,4 +4,5 @@ Obs: '--no-standalone' cria com separação de módulos (modelo antigo)
 	- npx @angular/cli@17.0.10 --no-standalone new [NOME_PROJETO] 
 
 
-###########  ###########
+########### CRIAR COMPONENTS COM NPX ###########
+	- npm run ng g c [FOLDER]/[NAME]
