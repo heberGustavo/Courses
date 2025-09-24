@@ -1,0 +1,7 @@
+########### CRIAR PROJETO COM NPX ###########
+Obs: '--no-standalone' cria com separação de módulos (modelo antigo)
+
+	- npx @angular/cli@17.0.10 --no-standalone new [NOME_PROJETO] 
+
+
+###########  ###########
