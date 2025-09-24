@@ -12,4 +12,10 @@ export class AppComponent {
   cardColorGreen = 'card-green';
   cardColorBrown = 'card-brown';
   cardColorYellow = 'card-yellow';
+
+  cardTypeSimples = "Simples";
+  cardTypeCompleto = "Completo";
+  cardTypePro = "PRO";
+  cardTypeAdvance = "Advance";
+
 }
