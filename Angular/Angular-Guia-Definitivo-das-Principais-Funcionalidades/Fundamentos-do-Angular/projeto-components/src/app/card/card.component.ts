@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+  styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  tipo: string = "Simpes Teste";
-  valor: number = 1000;
+  @Input({ required: true }) cardPlanType: string = '';
+  @Input() cardPlanValue: number = 0;
+  @Input() cardColor: string = 'card-green';
 
-  getValor(){
-    return `R$ ${this.valor},00`;
+  getValor() {
+    return `R$ ${this.cardPlanValue},00`;
   }
 }

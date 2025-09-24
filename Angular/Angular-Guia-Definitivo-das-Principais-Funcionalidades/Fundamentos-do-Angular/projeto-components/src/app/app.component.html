@@ -1,4 +1,8 @@
 <div class="cards-container">
-  <app-card></app-card>
-  <app-card></app-card>
+  <app-card
+    [cardPlanType]="cardPlanTypeSimple"
+    [cardPlanValue]="cardPlanValue"
+    [cardColor]="cardColorRed"
+  ></app-card>
+  <app-card [cardPlanType]="cardPlanTypeCompleto"></app-card>
 </div>
