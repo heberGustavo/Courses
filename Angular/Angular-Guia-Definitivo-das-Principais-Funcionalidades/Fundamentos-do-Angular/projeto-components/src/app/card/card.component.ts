@@ -13,4 +13,9 @@ export class CardComponent {
   getValor() {
     return `R$ ${this.cardPlanValue},00`;
   }
+
+  buttonCardClicked(value: string){
+    console.log("Button card clicked!");
+    console.log(`The message is: ${value}`);
+  }
 }

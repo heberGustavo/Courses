@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-button',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class CardButtonComponent {
 
+  @Output() buttonClickEmmiter = new EventEmitter<string>;
+  @Input({ required: true}) cardColor!: string;
+
+  showEvent(){
+    const message = `foi clicado: ${this.cardColor}`;
+    this.buttonClickEmmiter.emit(message);
+  }
 }

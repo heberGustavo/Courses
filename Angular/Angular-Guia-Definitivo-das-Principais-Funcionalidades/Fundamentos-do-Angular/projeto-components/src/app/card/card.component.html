@@ -6,5 +6,5 @@
         <input matSliderThumb value="1.5">
     </mat-slider>
 
-    <app-card-button></app-card-button>
+    <app-card-button (buttonClickEmmiter)="buttonCardClicked($event)" [cardColor]="cardColor" ></app-card-button>
 </div>
