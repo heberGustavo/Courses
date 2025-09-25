@@ -17,16 +17,20 @@ export class AppComponent {
   cardTypeCompleto = "Completo";
   cardTypePro = "PRO";
   cardTypeAdvance = "Advance";
-  
-  showCards(){
-    const info = {
-      car: {
-        color: "card-red",
-        type: "Simples",
-        value: 100
-      }
-    }
+ 
+  handleInputCardType1(e: Event){
+    const input = (e.target) as HTMLInputElement;
+    
+    const valor = input.value;
+    let valorFinal = "";
 
-    console.log(info);
+    if(valor) {
+      const primeiraLetra = valor[0].toLocaleUpperCase();
+      const textoSemPrimeiraLetra = valor.substring(1);
+      
+      valorFinal = primeiraLetra + textoSemPrimeiraLetra;
+    }
+    
+    this.cardTypeSimples = valorFinal;
   }
 }
