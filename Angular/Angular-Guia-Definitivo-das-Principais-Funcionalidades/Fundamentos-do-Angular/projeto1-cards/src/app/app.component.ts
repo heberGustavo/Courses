@@ -31,6 +31,6 @@ export class AppComponent {
       valorFinal = primeiraLetra + textoSemPrimeiraLetra;
     }
     
-    this.cardTypeSimples = valorFinal;
+    this.cardTypeSimples = valorFinal.length ? valorFinal : "Simples";
   }
 }
