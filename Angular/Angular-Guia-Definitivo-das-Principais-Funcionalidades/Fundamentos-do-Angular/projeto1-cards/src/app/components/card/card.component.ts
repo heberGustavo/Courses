@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
   @Input({required: true}) cardColor!: string;
   @Input({required: true}) cardType!: string;
+  @Input({required: true}) cardValue!: number;
 }

@@ -17,5 +17,16 @@ export class AppComponent {
   cardTypeCompleto = "Completo";
   cardTypePro = "PRO";
   cardTypeAdvance = "Advance";
+  
+  showCards(){
+    const info = {
+      car: {
+        color: "card-red",
+        type: "Simples",
+        value: 100
+      }
+    }
 
+    console.log(info);
+  }
 }
