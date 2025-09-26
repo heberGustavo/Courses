@@ -1,0 +1,13 @@
+<label>Nome:</label>
+<div>
+  <input type="text" [(ngModel)]="nome" />
+</div>
+
+<p>
+  Nome digitado: <b>{{ nome }}</b>
+</p>
+
+<!-- 
+[ngModel]="nome" -> Input
+(ngModelChange)="handleInputChange($event)"  -> Output
+-->
