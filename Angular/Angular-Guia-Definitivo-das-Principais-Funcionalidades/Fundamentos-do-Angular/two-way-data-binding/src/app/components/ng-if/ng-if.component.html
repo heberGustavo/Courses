@@ -1,0 +1,29 @@
+
+<hr>
+<h2>Exemplo 01</h2>
+<div *ngIf="visibility1; else meuTemplate">ng-if works - green!</div>
+
+<ng-template #meuTemplate>
+    <div class="bg-red">ng-if works - red!</div>
+</ng-template>
+
+<br>
+<button (click)="toggleVisibility()">Toggle</button>
+
+<br>
+<hr>
+
+<h2>Exemplo 02</h2>
+
+<ng-container *ngIf="visibility2; then meuTemplate01; else meuTemplate02"></ng-container>
+
+<ng-template #meuTemplate01>
+    <div>ng-if works - green 02!</div>
+</ng-template>
+
+<ng-template #meuTemplate02>
+    <div class="bg-red">ng-if works - red 02!</div>
+</ng-template>
+
+
+<button (click)="toggleVisibility(false)">Toggle 2</button>
