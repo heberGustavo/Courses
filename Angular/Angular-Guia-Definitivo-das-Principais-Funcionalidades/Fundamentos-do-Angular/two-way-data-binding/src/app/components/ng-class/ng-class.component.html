@@ -1,0 +1,29 @@
+<h1 [ngClass]="{
+    'is-big is-green': isGreen,
+    'is-orange': !isGreen
+}">
+    Sou uma H1
+</h1>
+
+<br>
+<button (click)="setGreen()">Verde</button>
+<button (click)="setOrange()">Laranja</button>
+
+<hr>
+
+<h1>Exemplos abaixo</h1>
+<!-- strings -->
+<h1 [ngClass]="'is-big is-green'">Sou um H1 !!!!</h1>
+<h1 [class]="'is-big is-green'">Sou um H1 !!!!</h1>
+
+<!-- Arrays -->
+<h1 [ngClass]="['is-big', 'is-green']">Sou um H1 !!!!</h1>
+<h1 [class]="['is-big', 'is-green']">Sou um H1 !!!!</h1>
+
+<!-- Objetos -->
+<h1 [ngClass]="{'is-big is-green': isGreen, 'is-orange': !isGreen }">Sou um H1 !!!!</h1>
+<h1 [ngClass]="{'is-green': isGreen, 'is-orange': !isGreen, }">Sou um H1 !!!!</h1>
+
+<!-- Diferença Objetos -->
+<h1 [class]="{ 'is-green': isGreen, 'is-orange': !isGreen, }">Sou um H1 !!!!</h1>
+<h1 [class]="{ 'is-big': isGreen, 'is-green': isGreen, 'is-orange': !isGreen, }">Sou um H1 !!!!</h1>

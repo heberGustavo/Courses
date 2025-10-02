@@ -7,6 +7,7 @@ import { NgIfComponent } from './ng-if/ng-if.component';
 import { NgForComponent } from './ng-for/ng-for.component';
 import { PersonComponent } from './person/person.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
+import { NgClassComponent } from './ng-class/ng-class.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgStyleComponent } from './ng-style/ng-style.component';
     NgForComponent,
     PersonComponent,
     NgStyleComponent,
+    NgClassComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { NgStyleComponent } from './ng-style/ng-style.component';
     NgForComponent,
     PersonComponent,
     NgStyleComponent,
+    NgClassComponent,
   ]
 })
 export class ComponentsModule { }
