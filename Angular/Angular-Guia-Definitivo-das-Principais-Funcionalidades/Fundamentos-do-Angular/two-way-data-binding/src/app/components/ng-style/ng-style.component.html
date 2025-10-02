@@ -1,0 +1,23 @@
+<h3
+  [ngStyle]="{
+    'font-size': fontSize + 'px',
+    color: textColor
+  }"
+>
+  Sou uma H3
+</h3>
+<hr />
+
+<h3 [style.font-size.px]="fontSize" [style.color]="textColor">Sou uma H3 v2</h3>
+<hr />
+
+<h3 [style]="styleText">Sou uma H3 v3</h3>
+<hr />
+
+<h3 [style]="styleText">Sou uma H3 v4</h3>
+<hr />
+
+<br />
+<button (click)="increaseFontSize()">+A</button>
+<button (click)="decreaseFontSize()">-A</button>
+<button (click)="toggleColor()">{{ nameColor }}</button>
