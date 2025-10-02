@@ -8,6 +8,8 @@ import { NgForComponent } from './ng-for/ng-for.component';
 import { PersonComponent } from './person/person.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
 import { NgClassComponent } from './ng-class/ng-class.component';
+import { IntroPipesComponent } from './intro-pipes/intro-pipes.component';
+import { StatusClassPipe } from '../pipes/status-class.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { NgClassComponent } from './ng-class/ng-class.component';
     PersonComponent,
     NgStyleComponent,
     NgClassComponent,
+    IntroPipesComponent,
+    StatusClassPipe,
   ],
   imports: [
     CommonModule,
@@ -31,6 +35,7 @@ import { NgClassComponent } from './ng-class/ng-class.component';
     PersonComponent,
     NgStyleComponent,
     NgClassComponent,
+    IntroPipesComponent,
   ]
 })
 export class ComponentsModule { }
