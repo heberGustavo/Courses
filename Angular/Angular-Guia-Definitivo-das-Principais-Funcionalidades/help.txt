@@ -6,3 +6,9 @@ Obs: '--no-standalone' cria com separação de módulos (modelo antigo)
 
 ########### CRIAR COMPONENTS COM NPX ###########
 	- npm run ng g c [FOLDER]/[NAME]
+
+
+########### COMANDOS NVM ###########
+nvm list - 
+nvm install 18.20.8 - instalar nova versão no Node
+nvm use 18.20.8 - usar a versão instalada
