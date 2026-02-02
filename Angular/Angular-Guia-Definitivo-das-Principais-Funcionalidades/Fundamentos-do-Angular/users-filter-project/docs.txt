@@ -1,0 +1,15 @@
+
+########### VERSIONS ###########
+Node: 18.20.8
+Angular CLI: 16.1.8
+Angular Material: v16 -> https://v16.material.angular.dev/
+
+########### CREATE PROJECT ###########
+npx @angular/cli@16.1.0 --no-standalone new users-filter-project
+
+########### INSTALL 'NG' ###########
+npm install -g @angular/cli
+
+########### INSTALL 'ANGULAR MATERIAL' ###########
+ng add @angular/material
+
