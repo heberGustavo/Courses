@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { TemplateVariableChangeDetactionComponent } from './components/template-variable-change-detaction/template-variable-change-detaction.component';
+import { TemplateVariablesChangeDetactionComponent } from './components/template-variables-change-detaction/template-variables-change-detaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateVariableChangeDetactionComponent,
+    TemplateVariablesChangeDetactionComponent,
   ],
   imports: [
     BrowserModule,

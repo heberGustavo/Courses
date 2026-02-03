@@ -1,0 +1,16 @@
+<h3>Exemplo 1</h3>
+
+<input type="text" #meuInput ngModel>
+Valor: {{meuInput.value}}
+<hr>
+
+<h3>Exemplo 2</h3>
+<input type="text" #meuInput2>
+Valor: {{meuInput2.value}}
+<button (click)="changeDetaction()">Atualizar</button>
+<hr>
+
+<h3>Exemplo 3</h3>
+<input type="text" #meuInput3 [(ngModel)]="teste">
+Valor: {{teste}}
+<hr>
