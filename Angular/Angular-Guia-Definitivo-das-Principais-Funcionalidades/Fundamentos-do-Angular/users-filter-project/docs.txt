@@ -13,3 +13,5 @@ npm install -g @angular/cli
 ########### INSTALL 'ANGULAR MATERIAL' ###########
 ng add @angular/material
 
+########### INSTALL LIB TO WORK WITH DATE 'DATE-FNS' ###########
+npm install date-fns: v^4.1.0 -> https://date-fns.org/

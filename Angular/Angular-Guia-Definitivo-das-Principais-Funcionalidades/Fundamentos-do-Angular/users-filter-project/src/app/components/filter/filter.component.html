@@ -1,9 +1,9 @@
 <div class="filter">
-    <form class="filter-form">
+    <div class="filter-form">
         <div class="form__name">
             <mat-form-field class="example-full-width">
                 <mat-label>Nome</mat-label>
-                <input matInput placeholder="Ex. Gustavo Cruz" value="Gustavo">
+                <input matInput placeholder="Ex. Gustavo Cruz" name="name" [(ngModel)]="filterOptions.name">
             </mat-form-field>
         </div>
 
@@ -11,8 +11,8 @@
             <mat-form-field>
                 <mat-label>Selecione as datas</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate placeholder="Inicio">
-                    <input matEndDate placeholder="Fim">
+                    <input matStartDate placeholder="Inicio" [(ngModel)]="filterOptions.startDate">
+                    <input matEndDate placeholder="Fim" [(ngModel)]="filterOptions.endDate">
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -23,17 +23,17 @@
 
         <div class="form__status">
             <mat-form-field>
-                <mat-label>Favorite food</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
+                <mat-label>Status</mat-label>
+                <mat-select [(ngModel)]="filterOptions.status">
+                    <mat-option *ngFor="let status of statusList" [value]="status.value">
+                        {{status.description}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
         <div class="form__button">
-            <button mat-raised-button color="primary">Filtrar</button>
+            <button mat-raised-button color="primary" (click)="onFilter()">Filtrar</button>
         </div>
-    </form>
+    </div>
 </div>
