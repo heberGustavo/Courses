@@ -8,6 +8,8 @@ import { HighLightDirective } from './directives/highlight.directive';
 import { SemDiretivaComponent } from './components/sem-diretiva/sem-diretiva.component';
 import { ComDiretivaComponent } from './components/com-diretiva/com-diretiva.component';
 import { TemplateVariablesChangeDetactionComponent } from './components/template-variables-change-detaction/template-variables-change-detaction.component';
+import { InputBackgroundDirective } from './directives/input-background.directive';
+import { InputBackgroundComponent } from './components/input-background/input-background.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { TemplateVariablesChangeDetactionComponent } from './components/template
     SemDiretivaComponent,
     ComDiretivaComponent,
     HighLightDirective,
+    InputBackgroundDirective,
+    InputBackgroundComponent,
   ],
   imports: [
     BrowserModule,
