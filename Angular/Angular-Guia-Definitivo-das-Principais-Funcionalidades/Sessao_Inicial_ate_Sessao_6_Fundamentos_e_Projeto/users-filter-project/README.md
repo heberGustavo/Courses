@@ -1,27 +1,41 @@
-# UsersFilterProject
+<h1 align="center">
+  USERS FILTER
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+</br>
+  
+<p align="center">
+   <a href="#round_pushpin-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#round_pushpin-infra">Infra</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wrench-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
-## Development server
+## :round_pushpin: Demo
+Obs: 
+  - PT-BR: Nesse projeto não se concentrou nos aspectos visuais, mas sim na estrutura e funcionalidade da aplicação.
+  - EN: This project did not focus on the visual aspects, but rather on the structure and functionality of the application.
+<img width="1336" height="565" alt="image" src="https://github.com/user-attachments/assets/1656d395-9352-4e26-bc7c-6aacabe7692a" />
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## :round_pushpin: Infra
+<img width="295" height="763" alt="image" src="https://github.com/user-attachments/assets/dc371a82-22ed-4b32-9b04-392a677db3bf" />
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## :wrench: Como usar
 
-## Build
+Clone that application using [Git](https://git-scm.com) and follow the next steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+# 1. Clone esse repositório 
 
-## Running unit tests
+# 2. Abra o projeto no Visual Studio Code
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# 3. Para rodar a aplicação Angular
+$ ng serve
 
-## Running end-to-end tests
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Autor
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| [<img src="https://avatars.githubusercontent.com/u/44476616?v=4" style="max-width: 100%;width: 90px;"><br><sub>Heber Gustavo</sub>](https://github.com/heberGustavo) |
+| :---: |
+|[Linkedin](https://www.linkedin.com/in/heber-gustavo/)|
