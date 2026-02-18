@@ -1,0 +1,16 @@
+<textarea
+  [(ngModel)]="meuTextArea"
+  #meuTextAreaFormControl="ngModel"
+  required
+  minlength="5">
+</textarea>
+
+<p>
+    Válido: {{meuTextAreaFormControl.valid}} <br>
+    Tocado: {{meuTextAreaFormControl.touched}} <br>
+    Sujo: {{meuTextAreaFormControl.dirty}} <br>
+</p>
+
+<button 
+    (click)="showData()"
+    [disabled]="meuTextAreaFormControl.invalid">Mostrar Dados</button>
