@@ -1,0 +1,9 @@
+<h5>Exemplo com Input e Output separados</h5>
+<input [ngModel]="nome" (ngModelChange)="getChange1($event)">
+<br><hr>
+
+<h5>Exemplo com Input e Output com Two-way-data-binding</h5>
+
+<input [(ngModel)]="nome2">
+<br><br>
+<button (click)="show()">Show</button>
