@@ -1,0 +1,15 @@
+<input 
+    ngModel
+    #meuInput1="ngModel"
+    required
+>
+
+<p>
+    Válido: {{meuInput1.valid}} <br>
+    Tocado: {{meuInput1.touched}} <br>
+    Sujo: {{meuInput1.dirty}} <br>
+</p>
+
+<button (click)="send()">Send</button>
+
+<hr>
