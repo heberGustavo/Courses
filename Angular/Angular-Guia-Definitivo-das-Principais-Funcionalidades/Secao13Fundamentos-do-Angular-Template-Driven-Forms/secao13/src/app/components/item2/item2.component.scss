@@ -1,0 +1,8 @@
+//EXEMPLO PARA ADICIOAR ESTILOS DE VALIDAÇÃO AOS CAMPOS DE FORMULÁRIO
+.ng-valid.ng-touched {
+  border: 1px solid green;
+}
+
+.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
