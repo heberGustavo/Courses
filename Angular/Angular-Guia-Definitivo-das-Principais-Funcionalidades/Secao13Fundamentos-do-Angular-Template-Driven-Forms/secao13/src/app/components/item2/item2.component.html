@@ -1,8 +1,14 @@
+Nome:
 <input 
     ngModel
     #meuInput1="ngModel"
+    minlength="5"
     required
 >
+<div *ngIf="meuInput1.invalid && meuInput1.touched">
+    <div *ngIf="meuInput1.hasError('required')">O campo Nome é obrigatório</div>
+    <div *ngIf="meuInput1.hasError('minlength')">O campo Nome deve ter no mínimo 5 caracteres</div>
+</div>
 
 <p>
     Válido: {{meuInput1.valid}} <br>
