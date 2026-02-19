@@ -8,6 +8,9 @@ import { Item2Component } from './components/item2/item2.component';
 import { Item3Component } from './components/item3/item3.component';
 import { Item4Component } from './components/item4/item4.component';
 import { Item5Component } from './components/item5/item5.component';
+import { MainFormComponent } from './components/item6/main-form/main-form.component';
+import { FormUserComponent } from './components/item6/form-user/form-user.component';
+import { FormProfessionComponent } from './components/item6/form-profession/form-profession.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { Item5Component } from './components/item5/item5.component';
     Item2Component,
     Item3Component,
     Item4Component,
-    Item5Component
+    Item5Component,
+    MainFormComponent,
+    FormUserComponent,
+    FormProfessionComponent
   ],
   imports: [
     BrowserModule,
