@@ -13,6 +13,8 @@ import { FormUserComponent } from './components/item6/form-user/form-user.compon
 import { FormProfessionComponent } from './components/item6/form-profession/form-profession.component';
 import { CustomValidatorFormEx1Component } from './components/item7/custom-validators/synchronous/ex1/custom-validator-form-ex1/custom-validator-form-ex1.component';
 import { InvalidTextValidatorDirective } from './components/item7/custom-validators/synchronous/ex1/directives/invalid-text-validator.directive';
+import { CustomValidatorFormEx2Component } from './components/item7/custom-validators/synchronous/ex2/custom-validator-form-ex2/custom-validator-form-ex2/custom-validator-form-ex2.component';
+import { DepartmentQuantityValidatorDirective } from './components/item7/custom-validators/synchronous/ex2/directives/department-quantity-validator.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { InvalidTextValidatorDirective } from './components/item7/custom-validat
     FormUserComponent,
     FormProfessionComponent,
     CustomValidatorFormEx1Component,
-    InvalidTextValidatorDirective
+    InvalidTextValidatorDirective,
+    CustomValidatorFormEx2Component,
+    DepartmentQuantityValidatorDirective
   ],
   imports: [
     BrowserModule,
