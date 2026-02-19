@@ -1,0 +1,24 @@
+<form #meuForm="ngForm" (ngSubmit)="onSubmit(meuForm)">
+    <ng-container ngModelGroup="grupoUsuario" #grupoUsuario="ngModelGroup">
+        <h2>Dados do Usuário</h2>
+        <input type="text" name="nome" placeholder="Nome" required [(ngModel)]="nome">
+        <input type="text" name="idade" placeholder="Idade" required [(ngModel)]="idade">
+
+        <br>
+        <b>Estado do grupo</b>
+        <p>
+            Válido: {{ grupoUsuario.valid }} /
+            Tocado: {{ grupoUsuario.touched }} /
+            Sujo: {{ grupoUsuario.dirty }}
+        </p>
+    </ng-container>
+
+    <ng-container ngModelGroup="grupoProfissao">
+        <h2>Dados da Profissão</h2>
+        <input type="text" name="cargo" placeholder="Cargo" required [(ngModel)]="cargo">
+        <input type="text" name="setor" placeholder="Setor" required [(ngModel)]="setor">
+    </ng-container>
+    
+    <br><br>
+    <button [disabled]="meuForm.invalid || meuForm.untouched"> Enviar</button>
+</form>
