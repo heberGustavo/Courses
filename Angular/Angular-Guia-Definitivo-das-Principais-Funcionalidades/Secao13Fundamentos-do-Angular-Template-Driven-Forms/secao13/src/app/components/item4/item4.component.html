@@ -8,7 +8,7 @@
 -->
 
 <form #meuForm="ngForm" (ngSubmit)="onSubmit(meuForm)" [ngFormOptions]="{ updateOn: 'change'} ">
-    <input type="text" name="nome" [(ngModel)]="nome"> <br>
+    <input #meuInputNome type="text" name="nome" [(ngModel)]="nome"> <br>
     <input type="text" name="descricao" [(ngModel)]="descricao"> <br>
 
     <select name="pais" id="pais" [(ngModel)]="pais">

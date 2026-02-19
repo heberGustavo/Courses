@@ -11,7 +11,7 @@ export class Item2Component implements AfterViewInit{
   @ViewChild('meuInput1') meuInput1!: NgModel;
 
   ngAfterViewInit(): void {
-    console.log(this.meuInput1);
+    //console.log(this.meuInput1);
   }
 
   send(){
