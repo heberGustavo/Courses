@@ -1,4 +1,13 @@
-<form #meuForm="ngForm" (ngSubmit)="onSubmit(meuForm)">
+<!--
+    O ngFormOptions é utilizado para configurar o comportamento do formulário, como por exemplo, quando as validações devem ser disparadas.
+
+    ==> Existem três opções para o updateOn:
+    1. [ngFormOptions]="{ updateOn: 'change'} // padrão, as validações são disparadas a cada mudança no campo
+    2. [ngFormOptions]="{ updateOn: 'blur'} // as validações são disparadas quando o campo perde o foco
+    3. [ngFormOptions]="{ updateOn: 'submit'} // as validações são disparadas apenas quando o formulário é submetido
+-->
+
+<form #meuForm="ngForm" (ngSubmit)="onSubmit(meuForm)" [ngFormOptions]="{ updateOn: 'change'} ">
     <input type="text" name="nome" [(ngModel)]="nome"> <br>
     <input type="text" name="descricao" [(ngModel)]="descricao"> <br>
 
