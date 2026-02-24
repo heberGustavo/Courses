@@ -1,7 +1,8 @@
 ########### CRIAR PROJETO COM NPX ###########
 Obs: '--no-standalone' cria com separação de módulos (modelo antigo)
 
-	- npx @angular/cli@17.0.10 --no-standalone new [NOME_PROJETO] 
+	- npx @angular/cli@17.0.10 --no-standalone new [NOME_PROJETO] (criar sem standalone)
+	- npx @angular/cli@17.0.0 new MEU_NOVO_PROJETO --style=scss --ssr=false (criar com standalone)
 
 
 ########### CRIAR COMPONENTS COM NPX ###########
