@@ -1,1 +1,13 @@
-<p>form-control works!</p>
+<label for="name">Nome:</label>
+<input type="text" id="name" [formControl]="nome" (input)="nomeAlterado()" />
+
+<p>{{ nome.value }}</p>
+
+<button (click)="onClickMostrarNomeControl()">Mostrar no Console</button><br />
+<br />
+
+<button (click)="onClickAlterarValor()">Alterar Valor</button><br>
+<br>
+
+<button (click)="desabilitar()">Desabilitar</button>
+<button (click)="habilitar()">Habilitar</button>
