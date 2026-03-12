@@ -3,8 +3,9 @@
 
 <div style="color: red">
     <p *ngIf="nome.hasError('required')">O nome é obrigatorio</p>
-    <p *ngIf="nome.hasError('minlength') && !nome.hasError('required')">O nome precisa ter pelo menos 3 letras</p>
-    <p *ngIf="nome.hasError('maxlength') && !nome.hasError('required')">O nome precisa ter até menos 5 letras</p>
+    <p *ngIf="nome.hasError('invalidText') && !nome.hasError('required')">{{ nome.getError('invalidText') }}</p>
+    <p *ngIf="nome.hasError('minlength') && !nome.hasError('required') && !nome.hasError('invalidText')">O nome precisa ter pelo menos 3 letras</p>
+    <p *ngIf="nome.hasError('maxlength') && !nome.hasError('required') && !nome.hasError('invalidText')">O nome precisa ter até menos 5 letras</p>
     <p 
         *ngIf="!nome.hasError('required') && !nome.hasError('minlength') && !nome.hasError('maxlength')"
         style="color: blue;"
