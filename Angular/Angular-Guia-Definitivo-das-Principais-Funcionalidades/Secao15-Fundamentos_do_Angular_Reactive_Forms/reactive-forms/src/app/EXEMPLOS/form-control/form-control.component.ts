@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-control',
@@ -7,8 +7,12 @@ import { FormControl } from '@angular/forms';
   styleUrl: './form-control.component.scss',
 })
 export class FormControlComponent implements OnInit {
-  nome = new FormControl({ value: '', disabled: false });
-  
+  nome = new FormControl('Inicial', {
+    nonNullable: true,
+    validators: [Validators.required, Validators.minLength(3), Validators.maxLength(5)],
+    updateOn: 'change',
+  });
+
   ngOnInit(){
     console.log(this.nome);  
   }
