@@ -20,7 +20,10 @@ export class FormControlComponent implements OnInit {
   });
 
   ngOnInit(){
+    console.group('Comp. FormControl - onInit');
+    
     console.log(this.nome);  
+    console.groupEnd();
   }
   
   onClickMostrarNomeControl(){

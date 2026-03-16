@@ -1,0 +1,13 @@
+<form [formGroup]="pessoaForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" formControlName="nome">
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" formControlName="email">
+    <br>
+
+    <button type="submit" [disabled]="!pessoaForm.valid" (click)="onSubmit()">Enviar</button>
+
+    <p>Formulário enviado: {{ pessoaForm.valid }} </p>
+</form>
