@@ -35,11 +35,20 @@ export class FormGroupComponent {
 
   onAlteracaoTotal() {
     this.pessoaForm.setValue({
-      nome: 'Fulano',
-      email: 'fulano@ig.com.br',
+      nome: 'Alteracao Total',
+      email: 'alteracao.total@ig.com.br',
       endereco: {
-        rua: 'Rua 1',
+        rua: 'Rua Alteracao Total',
         numero: '1'
+      }
+    });
+  }
+
+  onAlteracaoParcial() {
+    this.pessoaForm.patchValue({
+      nome: 'Fulano Pacial',
+      endereco: {
+        numero: '9999'
       }
     });
   }
