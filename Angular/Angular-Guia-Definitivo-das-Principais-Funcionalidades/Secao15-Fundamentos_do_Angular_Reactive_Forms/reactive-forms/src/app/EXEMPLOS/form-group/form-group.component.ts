@@ -33,6 +33,17 @@ export class FormGroupComponent {
     console.log('nome: ', nome);
   }
 
+  onAlteracaoTotal() {
+    this.pessoaForm.setValue({
+      nome: 'Fulano',
+      email: 'fulano@ig.com.br',
+      endereco: {
+        rua: 'Rua 1',
+        numero: '1'
+      }
+    });
+  }
+
   get nome(): FormControl {
     return this.pessoaForm.get('nome') as FormControl;
   }

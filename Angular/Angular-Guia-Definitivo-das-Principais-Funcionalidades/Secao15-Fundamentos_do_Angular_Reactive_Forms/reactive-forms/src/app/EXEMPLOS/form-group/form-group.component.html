@@ -19,8 +19,10 @@
         <span *ngIf="!enderecoNumero.hasError('required') && enderecoNumero.hasError('max') && enderecoNumero.touched" style="color: red;">O número precisa ser menor que 6</span>
     </div>
 
+    <br>
     <button type="submit" (click)="onSubmit()">Enviar</button>
-    <!-- <button type="submit" [disabled]="!pessoaForm.valid" (click)="onSubmit()">Enviar</button> -->
+    <button type="button" (click)="onAlteracaoTotal()">Alteração Total</button>
+    
 
     <p>Formulário total valido: {{ pessoaForm.valid }} </p>
     <p>Formulário endereço valido: {{ pessoaForm.get('endereco')?.valid }} </p>
