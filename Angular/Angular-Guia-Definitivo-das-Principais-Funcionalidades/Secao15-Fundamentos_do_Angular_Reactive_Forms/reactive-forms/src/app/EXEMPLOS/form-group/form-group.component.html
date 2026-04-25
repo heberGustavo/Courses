@@ -1,13 +1,20 @@
 <form [formGroup]="pessoaForm">
     <label for="name">Nome:</label>
-    <input type="text" id="name" formControlName="nome">
-    <br>
+    <input type="text" id="name" formControlName="nome"><br>
+    <span 
+        *ngIf="nome.hasError('required') && nome.touched"
+        style="color: red"
+    >Nome é obrigatório</span><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" formControlName="email">
-    <br>
+    <input type="email" name="email" id="email" formControlName="email"><br>
+    <span 
+        *ngIf="email.hasError('required') && email.touched"
+        style="color: red"
+    >Email é obrigatório</span><br>
 
-    <button type="submit" [disabled]="!pessoaForm.valid" (click)="onSubmit()">Enviar</button>
+    <button type="submit" (click)="onSubmit()">Enviar</button>
+    <!-- <button type="submit" [disabled]="!pessoaForm.valid" (click)="onSubmit()">Enviar</button> -->
 
     <p>Formulário enviado: {{ pessoaForm.valid }} </p>
 </form>

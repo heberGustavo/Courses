@@ -4,5 +4,15 @@
 <div>
     <p *ngIf="nome.pending" style="color: orange">Validando...</p>
     <p *ngIf="!nome.pending && !nome.hasError('userValidator') && nome.valid && nome.dirty" style="color: green">Usuário existente</p>
-    <p *ngIf="!nome.pending && nome.hasError('userValidator') && !nome.valid && nome.dirty" style="color: red">Usuário inexistente</p>
+    <div *ngIf="!nome.pending && nome.hasError('userValidator') && !nome.valid && nome.dirty" style="color: red">
+        <p>Usuário inexistente</p>
+        
+        <label>Exemplo de usuario existente:</label>
+        <ul>
+            <li>Ervin Howell</li>
+            <li>Leanne Graham</li>
+        </ul>
+        
+    </div>
+
 </div>
