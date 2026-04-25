@@ -7,8 +7,21 @@
     <input type="email" name="email" id="email" formControlName="email"><br>
     <span *ngIf="email.hasError('required') && email.touched" style="color: red">Email é obrigatório</span><br>
 
+    <div formGroupName="endereco">
+        <label for="rua">Rua: <span style="color: red;">*</span></label>
+        <input type="text" id="rua" formControlName="rua"><br>
+        <span *ngIf="enderecoRua.hasError('required') && enderecoRua.touched" style="color: red;">Rua é obrigatória</span>
+        <br>
+        <label for="numero">Número: <span style="color: red;">*</span></label>
+        <input type="number" id="numero" formControlName="numero"><br>
+        <span *ngIf="enderecoNumero.hasError('required') && enderecoNumero.touched" style="color: red;">Número é obrigatório</span>
+        <span *ngIf="!enderecoNumero.hasError('required') && enderecoNumero.hasError('min') && enderecoNumero.touched" style="color: red;">O número precisa ser maior que 0</span>
+        <span *ngIf="!enderecoNumero.hasError('required') && enderecoNumero.hasError('max') && enderecoNumero.touched" style="color: red;">O número precisa ser menor que 6</span>
+    </div>
+
     <button type="submit" (click)="onSubmit()">Enviar</button>
     <!-- <button type="submit" [disabled]="!pessoaForm.valid" (click)="onSubmit()">Enviar</button> -->
 
-    <p>Formulário enviado: {{ pessoaForm.valid }} </p>
+    <p>Formulário total valido: {{ pessoaForm.valid }} </p>
+    <p>Formulário endereço valido: {{ pessoaForm.get('endereco')?.valid }} </p>
 </form>
