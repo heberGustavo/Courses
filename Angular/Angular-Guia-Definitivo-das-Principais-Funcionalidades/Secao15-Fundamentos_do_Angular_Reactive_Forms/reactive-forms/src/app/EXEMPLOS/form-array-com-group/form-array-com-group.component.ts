@@ -9,11 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class FormArrayComGroupComponent {
   musicasForm = new FormGroup({
     musicas: new FormArray([
-      new FormGroup({
-        id: new FormControl(this.idRandon),
-        titulo: new FormControl('Inicial', [Validators.required]),
-        banda: new FormControl('Inicial', [Validators.required])
-      })
+      this.criarGrupoMusica()
     ])
   });
 
@@ -27,15 +23,19 @@ export class FormArrayComGroupComponent {
 
   onClickAdicionarMusica() {
     this.musicas.push(
-      new FormGroup({
-        id: new FormControl(this.idRandon),
-        titulo: new FormControl('Novo Titulo', [Validators.required]),
-        banda: new FormControl('Nova Banda', [Validators.required])
-      })
+      this.criarGrupoMusica()
     );
   }
 
   onClickRemoverMusica(index: number) {
     this.musicas.removeAt(index);
+  }
+
+  private criarGrupoMusica(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(this.idRandon),
+      titulo: new FormControl('Novo Titulo', [Validators.required]),
+      banda: new FormControl('Nova Banda', [Validators.required])
+    })
   }
 }
