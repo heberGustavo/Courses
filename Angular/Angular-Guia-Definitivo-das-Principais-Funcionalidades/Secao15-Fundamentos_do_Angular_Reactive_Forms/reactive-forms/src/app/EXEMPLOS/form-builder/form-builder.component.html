@@ -1,0 +1,31 @@
+<div [formGroup]="pessoaForm">
+
+    <label for="nome">Nome: </label>
+    <input type="text" id="nome" formControlName="nome"><br>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email"><br>
+
+    <br>
+    <label style="font-weight: bold;">Endereço (formGroup):</label>
+    <div formGroupName="endereco">
+        <label for="rua">Rua: </label>
+        <input type="text" id="rua" formControlName="rua"><br>
+
+        <label for="numero">Número</label>
+        <input type="text" id="numero" formControlName="numero"><br>
+    </div>
+
+    <br>
+    <label style="font-weight: bold;">Musicas (formArray):</label>
+    <div formArrayName="musicas">
+        <div *ngFor="let musica of musicas.controls; let i = index">
+            <label [for]="'musica' + i">Música:</label>
+            <input type="text" [id]="'musica' + 1" [formControlName]="i"><br>
+        </div>
+    </div>
+</div>
+
+<p>Formulario valido: {{ pessoaForm.valid }}</p>
+<p>Endereço valido: {{ pessoaForm.get('endereco')?.valid }}</p>
+<p>Musicas valido: {{ musicas.valid }}</p>
