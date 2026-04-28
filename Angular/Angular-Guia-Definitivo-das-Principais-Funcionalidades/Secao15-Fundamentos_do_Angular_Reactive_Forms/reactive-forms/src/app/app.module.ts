@@ -14,6 +14,7 @@ import { FormBuilderComponent } from './EXEMPLOS/form-builder/form-builder.compo
 import { FormBuilderExternoComponent } from './EXEMPLOS/form-builder-externo/form-builder-externo.component';
 import { FormCompFilhosComponent } from './EXEMPLOS/form-comp-filhos/form-comp-filhos.component';
 import { EnderecoComponent } from './EXEMPLOS/form-comp-filhos/components/endereco/endereco.component';
+import { DesafioTouchedComponent } from './EXERCICIOS/desafio-touched/desafio-touched.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EnderecoComponent } from './EXEMPLOS/form-comp-filhos/components/endere
     FormBuilderComponent,
     FormBuilderExternoComponent,
     FormCompFilhosComponent,
-    EnderecoComponent
+    EnderecoComponent,
+    DesafioTouchedComponent
   ],
   imports: [
     BrowserModule,
