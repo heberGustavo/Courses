@@ -1,0 +1,10 @@
+<form [formGroup]="pessoaForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" formControlName="nome"><br>
+    
+    <br>
+
+    <app-endereco [pessoaForm]="pessoaForm"></app-endereco>
+
+    <p>Formulario valido: {{ pessoaForm.valid }}</p>
+</form>
