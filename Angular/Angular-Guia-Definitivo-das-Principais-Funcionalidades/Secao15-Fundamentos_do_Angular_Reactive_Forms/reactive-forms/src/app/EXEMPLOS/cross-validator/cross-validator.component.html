@@ -1,0 +1,20 @@
+<div [formGroup]="pessoaForm">
+    <label for="senha">Senha: </label>
+    <input type="text" id="senha" formControlName="senha">
+    <br>
+
+    <label for="confirmarSenha">Confirmar Senha:</label>
+    <input type="text" id="confirmarSenha" formControlName="confirmarSenha">
+    <div 
+        style="color: red"
+        *ngIf="confirmarSenha.invalid && (confirmarSenha.dirty || confirmarSenha.touched)"
+    >
+        <span *ngIf="confirmarSenha.hasError('invalidPassword')">As senhas não coincidem.</span>
+    </div>
+
+    <br>
+    <button type="submit" (click)="onClickEnviar()" [disabled]="pessoaForm.invalid">Enviar</button>
+</div>
+
+<p>Formulario valido: {{ pessoaForm.valid }}</p>
+<p>Confirmar Senha Valido: {{ pessoaForm.get('confirmarSenha')?.valid }}</p>

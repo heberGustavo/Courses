@@ -16,6 +16,7 @@ import { FormCompFilhosComponent } from './EXEMPLOS/form-comp-filhos/form-comp-f
 import { EnderecoComponent } from './EXEMPLOS/form-comp-filhos/components/endereco/endereco.component';
 import { DesafioTouchedComponent } from './EXERCICIOS/desafio-touched/desafio-touched.component';
 import { FormComChamadaHttpComponent } from './EXEMPLOS/form-com-chamada-http/form-com-chamada-http.component';
+import { CrossValidatorComponent } from './EXEMPLOS/cross-validator/cross-validator.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormComChamadaHttpComponent } from './EXEMPLOS/form-com-chamada-http/fo
     FormCompFilhosComponent,
     EnderecoComponent,
     DesafioTouchedComponent,
-    FormComChamadaHttpComponent
+    FormComChamadaHttpComponent,
+    CrossValidatorComponent
   ],
   imports: [
     BrowserModule,
